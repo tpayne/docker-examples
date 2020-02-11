@@ -1,4 +1,4 @@
-# Dockerfile to simple a few simple packages using centos
+# This docker file creates a centos image and installs various packages into it
 FROM centos
 
 # Install a couple of supporting packs and do an update...
