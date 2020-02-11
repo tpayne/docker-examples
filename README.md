@@ -42,6 +42,17 @@ The examples will run various Dockerfiles building containers for `Centos`, `Ope
 
 More examples will be added at a later date.
 
+Docker Files
+------------
+The following table contains the file descriptions.
+
+>| Docker File | Description | 
+>| ----------- | ----------- |
+>| `busybox/DockerFileSimple.docker` | Docker file to setup Busybox container and run some commands on it |
+>| `centos/DockerFileBasic.docker` | Docker file to setup Centos container and install some packages on it |
+>| `centos/DockerFileDevEnv.docker` | Docker file to setup Centos container and install dev environment on it |
+>| `opensuse/DockerFileSuse.docker` | Docker file to setup OpenSUSE container and install some packages on it |
+
 Liability Warning
 =================
 The contents of this repository (documents and examples) are provided “as-is” with no warrantee implied 
