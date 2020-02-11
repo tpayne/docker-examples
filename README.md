@@ -7,12 +7,13 @@ Kubernetes.
 Status
 ------
 ````
-Example Status: Ready for use
+Docker Example Status: Ready for use
+Kubernetes Example Status: TBD
 ````
 
 Docker Examples
 ===============
-The examples contained in this repo run on various flavours of Linux. The examples are driven by a set of simple makefile.
+The examples contained in this repo run on various flavours of Linux. The examples are driven by a set of simple makefiles.
 
 To run the examples simply do the following
 
@@ -24,4 +25,6 @@ To clean up, simply repeat with the clean target
 
 	% cd samples; make clean
   
-The examples will run various Dockerfiles building containers for centos, opensuse and busybox.
+The examples will run various Dockerfiles building containers for `Centos`, `OpenSuse` and `Busybox`.
+
+More examples will be added at a later date.
