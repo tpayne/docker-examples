@@ -1,4 +1,4 @@
-# Dockerfile to create the customized image for App
+# This docker file creates a simple busybox image and runs some commands in it before stopping
 FROM busybox
 
 # Run something stupid...
