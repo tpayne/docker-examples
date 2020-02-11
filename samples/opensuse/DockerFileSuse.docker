@@ -1,4 +1,4 @@
-# Dockerfile to create the customized image for App
+# This docker file creates an OpenSUSE image and installs various packages into it
 FROM opensuse/leap
 
 # Install a couple of supporting packs and do an update...
