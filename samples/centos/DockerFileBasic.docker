@@ -1,0 +1,5 @@
+# Dockerfile to simple a few simple packages using centos
+FROM centos
+
+# Install a couple of supporting packs and do an update...
+RUN yum install zip unzip httpd -y && yum update -y
