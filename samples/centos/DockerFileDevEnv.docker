@@ -1,4 +1,4 @@
-# # This docker file creates a centos image and installs various development packages into it
+# This docker file creates a centos image and installs various development packages into it
 FROM centos
 
 # Install Devpacks
