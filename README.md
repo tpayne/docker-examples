@@ -50,7 +50,8 @@ The following table contains the file descriptions.
 >| ----------- | ----------- |
 >| `busybox/DockerFileSimple.docker` | Docker file to setup Busybox container and run some commands on it |
 >| `centos/DockerFileBasic.docker` | Docker file to setup Centos container and install some packages on it |
->| `centos/DockerFileDevEnv.docker` | Docker file to setup Centos container and install dev environment on it |
+>| `centos/DockerFileDevEnv.docker` | Docker file to setup Centos container and install a dev environment on it |
+>| `centos/DockerFileDevEnvAdv.docker` | Docker file to setup Centos container, install a dev environment on it, then create some users plus groups |
 >| `opensuse/DockerFileSuse.docker` | Docker file to setup OpenSUSE container and install some packages on it |
 
 Liability Warning
