@@ -53,6 +53,7 @@ The following table contains the file descriptions.
 >| `centos/DockerFileDevEnv.docker` | Docker file to setup Centos container and install a dev environment on it |
 >| `centos/DockerFileDevEnvAdv.docker` | Docker file to setup Centos container, install a dev environment on it, then create some users plus groups |
 >| `opensuse/DockerFileSuse.docker` | Docker file to setup OpenSUSE container and install some packages on it |
+>| `ubuntu/DockerFileUbuntu.docker` | Docker file to setup Ubuntu container and install some packages on it |
 
 Liability Warning
 =================
