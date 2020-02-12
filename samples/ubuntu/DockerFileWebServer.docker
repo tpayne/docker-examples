@@ -1,0 +1,21 @@
+# This docker file creates an Ubuntu image and installs a webserver
+FROM ubuntu
+
+# Install a couple of supporting packs and do an update...
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update
+RUN apt-get install nginx net-tools -y
+RUN apt-get update
+RUN ifconfig
+RUN chown -R www-data:www-data /var/lib/nginx
+
+# Define mountable directories.
+VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
+
+# Define working directory.
+WORKDIR /etc/nginx
+
+# Run webserver and expose standard ports
+CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 80
+EXPOSE 443
