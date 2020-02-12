@@ -44,7 +44,7 @@ More examples will be added at a later date.
 
 So, what next?
 --------------
-To show and run the containers you have just created, use the following commands...
+To show and run the containers you have just created, you can use the following commands...
 
 	% docker images
 	REPOSITORY                           TAG                 IMAGE ID            CREATED             SIZE
@@ -60,7 +60,7 @@ To show and run the containers you have just created, use the following commands
 	ubuntu                               latest              ccc6e87d482b        3 weeks ago         64.2MB
 	busybox                              latest              6d5fcfe5ff17        6 weeks ago         1.22MB
 
-This command lists all the images created, then you can run them via...
+The `docker images` command lists all the images you have created. You can then run them via...
 
 	% docker run -i -t dockerfiledevenv.img 
 	[root@21b717998a7c /]# df -H
