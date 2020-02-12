@@ -60,7 +60,8 @@ To show and run the containers you have just created, you can use the following 
 	ubuntu                               latest              ccc6e87d482b        3 weeks ago         64.2MB
 	busybox                              latest              6d5fcfe5ff17        6 weeks ago         1.22MB
 
-The `docker images` command lists all the images you have created. You can then run them via...
+The `docker images` command lists all the images you have created. You can then run them via the `docker run` command
+as shown in the example below...
 
 	% docker run -i -t dockerfiledevenv.img 
 	[root@21b717998a7c /]# df -H
