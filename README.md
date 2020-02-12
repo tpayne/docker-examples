@@ -115,6 +115,7 @@ The following table contains the file descriptions.
 >| `centos/DockerFileDevEnvAdv.docker` | Docker file to setup Centos container, install a dev environment on it, then create some users plus groups |
 >| `opensuse/DockerFileSuse.docker` | Docker file to setup OpenSUSE container and install some packages on it |
 >| `ubuntu/DockerFileUbuntu.docker` | Docker file to setup Ubuntu container and install some packages on it |
+>| `ubuntu/DockerFileWebServer.docker` | Docker file to setup Ubuntu container and a webserver on it |
 
 Liability Warning
 =================
