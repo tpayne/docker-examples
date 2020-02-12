@@ -1,0 +1,21 @@
+# This docker file creates a centos image and installs various development packages into it
+FROM centos
+  
+# Install Development packages and Java tools
+# ------------------------------------------
+RUN yum groupinstall 'Development Tools' -y &&\     
+	yum install java-1.8.0-openjdk-devel git -y &&\
+	yum update -y && yum clean all
+
+# Define users and groups
+# ----------------------
+RUN groupadd -g 501 devgroup &&\     
+	adduser -m -d /home/devuser -s /bin/bash -u 500 -g devgroup devuser
+
+# Install runtime packages needed
+# ------------------------------
+RUN yum install -y binutils.x86_64 \
+       	ksh \             
+        sysstat.x86_64 zip unzip
+
+RUN yum install -y httpd
