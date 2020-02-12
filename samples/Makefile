@@ -10,6 +10,7 @@ all: build
 TARGETS=\
 	busybox \
 	centos \
+	ubuntu \
 	opensuse
 
 build:

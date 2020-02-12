@@ -11,6 +11,7 @@ all: build
 # Docker images to build...
 DOCKERFILES=\
 	DockerFileDevEnv.img \
+	DockerFileDevEnvAdv.img \
 	DockerFileBasic.img
 
 build: $(DOCKERFILES)
