@@ -1,0 +1,11 @@
+# This docker file creates an Ubuntu image and installs various packages into it
+FROM ubuntu
+
+# Install a couple of supporting packs and do an update...
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update
+RUN apt-get install apache2 php php-mysql nginx-light -y
+RUN service apache2 restart 
+RUN apt-get install -y default-jre-headless
+RUN apt-get install -y screen
+RUN apt-get update
