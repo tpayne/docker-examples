@@ -109,13 +109,14 @@ The following table contains the file descriptions.
 
 >| Docker File | Description | 
 >| ----------- | ----------- |
->| `busybox/DockerFileSimple.docker` | Docker file to setup Busybox container and run some commands on it |
->| `centos/DockerFileBasic.docker` | Docker file to setup Centos container and install some packages on it |
->| `centos/DockerFileDevEnv.docker` | Docker file to setup Centos container and install a dev environment on it |
->| `centos/DockerFileDevEnvAdv.docker` | Docker file to setup Centos container, install a dev environment on it, then create some users plus groups |
->| `opensuse/DockerFileSuse.docker` | Docker file to setup OpenSUSE container and install some packages on it |
->| `ubuntu/DockerFileUbuntu.docker` | Docker file to setup Ubuntu container and install some packages on it |
->| `ubuntu/DockerFileWebServer.docker` | Docker file to setup Ubuntu container and a webserver on it |
+>| `busybox/DockerFileSimple.docker` | Docker file to setup a Busybox container and run some commands on it |
+>| `centos/DockerFileBasic.docker` | Docker file to setup a Centos container and install some packages on it |
+>| `centos/DockerFileDevEnv.docker` | Docker file to setup a Centos container and install a dev environment on it |
+>| `centos/DockerFileDevEnvAdv.docker` | Docker file to setup a Centos container, install a dev environment on it, then create some users plus groups |
+>| `opensuse/DockerFileSuse.docker` | Docker file to setup an OpenSUSE container and install some packages on it |
+>| `ubuntu/DockerFileUbuntu.docker` | Docker file to setup an Ubuntu container and install some packages on it |
+>| `ubuntu/DockerFileWebServer.docker` | Docker file to setup an Ubuntu container and a webserver in it |
+>| `ubuntu/DockerFilePostgres.docker` | Docker file to setup an Ubuntu container and a PostgreSQL DB server in it |
 
 Liability Warning
 =================
