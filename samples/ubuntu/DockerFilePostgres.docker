@@ -1,0 +1,33 @@
+# This docker file creates an Ubuntu image and installs Postgresql packages into it
+FROM ubuntu
+
+# Install a couple of supporting packs and do an update...
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update
+
+#  Postgres packages...
+RUN apt-get install postgresql postgresql-contrib -y
+
+#  Adding for usefulness...
+RUN apt-get install -y default-jre-headless curl net-tools
+RUN apt-get install -y systemd
+RUN apt-get install -y sudo
+
+#  Enabling service & checking it starts...
+RUN update-rc.d postgresql enable
+RUN systemctl enable postgresql
+RUN service postgresql start
+
+#  Last update
+RUN apt-get update
+
+# Postgres database now ready for creation
+# 
+# The specifics of the DB and setup are left to the user to define
+# using...
+#   service postgresql start
+#   sudo -u postgres createuser ...
+#   sudo -u postgres createdb ...
+#   sudo adduser  ...
+#   psql -d ...
+#   etc.
