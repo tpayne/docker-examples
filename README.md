@@ -117,6 +117,7 @@ The following table contains the file descriptions.
 >| `ubuntu/DockerFileUbuntu.docker` | Docker file to setup an Ubuntu container and install some packages on it |
 >| `ubuntu/DockerFileWebServer.docker` | Docker file to setup an Ubuntu container and a webserver in it |
 >| `ubuntu/DockerFilePostgres.docker` | Docker file to setup an Ubuntu container and a PostgreSQL DB server in it |
+>| `ubuntu/DockerFileMongoDB.docker` | Docker file to setup an Ubuntu container and a Mongo NoSQL DB server in it |
 
 Liability Warning
 =================
