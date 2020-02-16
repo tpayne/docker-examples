@@ -1,0 +1,49 @@
+# This docker file creates an Ubuntu image and installs NoSQL MongoDB packages into it
+FROM ubuntu
+
+# Install a couple of supporting packs and do an update...
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update
+
+#  MongoDB packages...
+RUN apt-get install mongodb -y
+
+#  Adding for usefulness...
+RUN apt-get install -y systemd
+RUN apt-get install -y sudo
+RUN apt-get install -y curl
+RUN apt-get install -y net-tools
+RUN apt-get install -y ufw
+RUN apt-get install -y default-jre-headless 
+RUN apt-get install -y nano
+RUN apt-get install -y vim
+
+#  Last update
+RUN apt-get update
+
+#  Enabling service & checking it starts...
+RUN update-rc.d mongodb enable
+RUN systemctl enable mongodb
+RUN service mongodb start
+
+#  Allow remote connections...
+#  Note - This is too open and would need to be customised to your remote IP ranges
+#  plus modifying the /etc/mongodb.conf configuration file as shown below...
+#    bind_ip = 127.0.0.1,<serverip>
+#  Then...
+#  RUN ufw allow from <serverip>/32 to any port 27017 
+#  
+RUN ufw allow 27017
+
+# Mongo database now ready for creation
+# 
+# The specifics of the DB and setup are left to the user to define
+# using...
+#   service mongodb start
+#   mongodb ... << EOF
+#   use admin
+#   db.createUser({user:"root", pwd:"XXXXXXXXXXX", roles:[{role:"root", db:"admin"}]})
+#   etc.
+#   EOF
+
+
