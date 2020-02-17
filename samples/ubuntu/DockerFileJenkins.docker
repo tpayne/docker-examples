@@ -1,0 +1,46 @@
+# This docker file creates an Ubuntu image and installs Jenkins packages into it
+FROM ubuntu
+
+# Install a couple of supporting packs and do an update...
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update
+RUN apt-get install wget gnupg -y
+
+#  Jenkins packages...
+RUN wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | apt-key add -
+RUN sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+RUN apt-get update
+RUN apt-get install jenkins -y
+
+#  Adding for usefulness...
+RUN apt-get install -y systemd
+RUN apt-get install -y sudo
+RUN apt-get install -y curl
+RUN apt-get install -y net-tools
+RUN apt-get install -y ufw
+RUN apt-get install -y default-jre-headless 
+RUN apt-get install -y nano
+RUN apt-get install -y vim
+RUN apt-get install -y ssh iptables
+RUN apt-get install -y default-jdk maven
+
+#  Last update
+RUN apt-get update
+
+#  Enabling service & checking it starts...
+RUN update-rc.d jenkins enable
+RUN systemctl enable jenkins
+RUN service jenkins start
+
+#  Firewall changes
+RUN ufw allow openssh
+RUN ufw allow 22
+RUN ufw allow 8080
+RUN ufw allow 443
+RUN ufw allow 80
+
+#  RUN ufw --force enable
+#  RUN /lib/ufw/ufw-init start
+
+#  You may wish to extend this dockerfile to run Jenkins in the foreground
+#  At the moment, it is just a simple installed container which is configured to run Jenkins
