@@ -5,7 +5,9 @@ FROM ubuntu
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get install apache2 php php-mysql nginx-light -y
-RUN service apache2 restart 
-RUN apt-get install -y default-jre-headless
+RUN apt-get install -y default-jre-headless curl net-tools
 RUN apt-get install -y screen
+RUN apt-get install -y systemd
+RUN update-rc.d apache2 enable
+RUN systemctl enable apache2
 RUN apt-get update

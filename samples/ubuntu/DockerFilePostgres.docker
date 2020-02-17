@@ -1,4 +1,4 @@
-# This docker file creates an Ubuntu image and installs Postgresql packages into it
+# This docker file creates an Ubuntu image and installs Postgresql RMDB packages into it
 FROM ubuntu
 
 # Install a couple of supporting packs and do an update...
@@ -9,17 +9,19 @@ RUN apt-get update
 RUN apt-get install postgresql postgresql-contrib -y
 
 #  Adding for usefulness...
-RUN apt-get install -y default-jre-headless curl net-tools
+RUN apt-get install -y default-jre-headless curl 
 RUN apt-get install -y systemd
 RUN apt-get install -y sudo
+RUN apt-get install -y curl
+RUN apt-get install -y net-tools
+
+#  Last update
+RUN apt-get update
 
 #  Enabling service & checking it starts...
 RUN update-rc.d postgresql enable
 RUN systemctl enable postgresql
 RUN service postgresql start
-
-#  Last update
-RUN apt-get update
 
 # Postgres database now ready for creation
 # 

@@ -10,7 +10,11 @@ all: build
 
 # Docker images to build...
 DOCKERFILES=\
-	DockerFileUbuntu.img
+	DockerFileUbuntu.img \
+	DockerFileWebServer.img \
+	DockerFileMongoDB.img \
+	DockerFileJenkins.img \
+	DockerFilePostgres.img
 
 build: $(DOCKERFILES)
 	@echo Creating images...         
