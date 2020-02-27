@@ -15,3 +15,10 @@ kubectl get services
 
 # Scale the service
 kubectl scale deployment webserver --replicas 2
+
+# Clean up
+kubectl delete deployments webserver
+kubectl delete service webserver
+docker image remove localhost:5000/dockerfilewebserver.img:1.0
+docker container stop registry && docker container rm -v registry
+
