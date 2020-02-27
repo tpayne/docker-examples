@@ -1,0 +1,17 @@
+# Setup local registry
+docker run -d -p 5000:5000 --restart=always --name registry registry:2
+
+# Push image to local repo
+docker tag dockerfilewebserver.img localhost:5000/dockerfilewebserver.img:1.0
+docker push localhost:5000/dockerfilewebserver.img:1.0
+
+# Run the service
+kubectl run webserver --image=localhost:5000/dockerfilewebserver.img:1.0
+kubectl expose deployment webserver --port 80 --type LoadBalancer --name webserver --target-port 8000
+
+# Test the service
+kubectl get pods
+kubectl get services
+
+# Scale the service
+kubectl scale deployment webserver --replicas 2
