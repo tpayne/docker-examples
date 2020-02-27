@@ -1,17 +1,27 @@
+# Uncompress the package code
 gzip -d resources-echo-web-v2.tar.gz
 tar xvf resources-echo-web-v2.tar
+
+# Build and tag the image for loading into GCP project registry
 docker build . -f Dockerfile -t echo-app:v2
 docker tag echo-app:v2 gcr.io/<projectId>/echo-app:v2
 docker push gcr.io/<projectId>/echo-app:v2
+
+# Get yourself ready to use GCP Kubernetes
 gcloud container clusters get-credentials echo-cluster --zone us-central1-a --project <projectId>
 kubectl config current-context gke_<projectId>-central1-a_echo-cluster
 gcloud auth configure-docker
 
+# Delete existing deployments/services
 kubectl delete deployments echo-web
 kubectl delete service echo-web
 kubectl delete svc echo-web
+
+# Re-deploy and create service
 kubectl run echo-web --image=gcr.io/<projectId>/echo-app:v2
 kubectl expose deployment echo-web --port 80 --type LoadBalancer --name echo-web --target-port 8000
+
+# Scale service and report
 kubectl scale deployment echo-web --replicas 2
 kubectl get pods
 kubectl get services
