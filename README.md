@@ -131,3 +131,5 @@ result of ignoring this warning, then the fault is yours only and has nothing to
 Licensing
 =========
 This software is licensed using the terms and provisions of the [MIT license](https://en.wikipedia.org/wiki/MIT_License).
+
+Google packages are release under their licensing - Apache 2.0
