@@ -8,7 +8,7 @@ Status
 ------
 ````
 Docker Example Status: Ready for use
-Kubernetes Example Status: TBD
+Kubernetes Example Status: Ready for use
 ````
 
 Docker Examples
