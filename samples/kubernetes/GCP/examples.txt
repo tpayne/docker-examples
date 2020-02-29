@@ -8,8 +8,8 @@ docker tag echo-app:v2 gcr.io/<projectId>/echo-app:v2
 docker push gcr.io/<projectId>/echo-app:v2
 
 # Get yourself ready to use GCP Kubernetes
-gcloud container clusters get-credentials echo-cluster --zone us-central1-a --project <projectId>
-kubectl config current-context gke_<projectId>-central1-a_echo-cluster
+gcloud container clusters get-credentials echo-cluster --zone <zoneId> --project <projectId>
+kubectl config current-context gke_<projectId>-<zoneId>_echo-cluster
 gcloud auth configure-docker
 
 # Delete existing deployments/services
