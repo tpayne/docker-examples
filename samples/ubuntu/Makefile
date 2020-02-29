@@ -15,6 +15,7 @@ DOCKERFILES=\
 	DockerFileMongoDB.img \
 	DockerFileJenkins.img \
 	DockerFileMediaWiki.img \
+	DockerFileMinecraft.img \
 	DockerFilePostgres.img
 
 build: $(DOCKERFILES)

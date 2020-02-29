@@ -1,0 +1,34 @@
+# This docker file creates an Ubuntu image and installs a webserver
+FROM ubuntu
+
+# Install a couple of supporting packs and do an update...
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update
+RUN apt-get install -y default-jre-headless
+
+#  Adding for usefulness...
+RUN apt-get install -y systemd
+RUN apt-get install -y sudo
+RUN apt-get install -y curl
+RUN apt-get install -y net-tools
+RUN apt-get install -y ufw
+RUN apt-get install -y default-jre-headless 
+RUN apt-get install -y nano
+RUN apt-get install -y vim
+RUN apt-get install -y wget screen
+
+RUN apt-get update
+
+# Define directories.
+RUN mkdir /home/minecraft
+
+# Define working directory & get minecraft
+WORKDIR /home/minecraft
+RUN wget https://launcher.mojang.com/v1/objects/d0d0fe2b1dc6ab4c65554cb734270872b72dadd6/server.jar
+RUN java -Xmx1024M -Xms1024M -jar server.jar nogui
+RUN sed 's|eula=false|eula=true|g' eula.txt >  eula.txt1; mv eula.txt1  eula.txt 
+
+# Run server and expose standard ports
+CMD ["java", "-Xmx1024M", "-Xms1024M", "-jar", "server.jar", "nogui"]
+EXPOSE 80
+EXPOSE 25565
