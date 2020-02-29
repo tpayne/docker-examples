@@ -11,6 +11,14 @@ Docker Example Status: Ready for use
 Kubernetes Example Status: Ready for use
 ````
 
+Kubernetes Examples
+===================
+The examples contained in this repo run on GCP and standard Kubernetes. They are sequences of `kubectl` commands
+that show what Kubernetes can do. 
+
+They can be found in the `samples/kubernetes` directory. You will need to install or have access to a Kubernetes 
+or GKE system to run them. They also rely on the Docker images having been created.
+
 Docker Examples
 ===============
 The examples contained in this repo run on various flavours of Linux. The examples are driven by a set of simple makefiles.
@@ -119,6 +127,7 @@ The following table contains the file descriptions.
 >| `ubuntu/DockerFilePostgres.docker` | Docker file to setup an Ubuntu container and a PostgreSQL DB server in it |
 >| `ubuntu/DockerFileMongoDB.docker` | Docker file to setup an Ubuntu container and a Mongo NoSQL DB server in it |
 >| `ubuntu/DockerFileJenkins.docker` | Docker file to setup an Ubuntu container and a Jenkins CI server in it |
+>| `ubuntu/DockerFileJenkins.docker` | Docker file to setup an Ubuntu container and a MediaWiki server in it |
 
 Liability Warning
 =================
