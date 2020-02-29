@@ -5,6 +5,8 @@
 
 all: build         
 	  @echo Built images
+	  docker images
+	  docker ps -a
 
 # Docker images to build...
 TARGETS=\
