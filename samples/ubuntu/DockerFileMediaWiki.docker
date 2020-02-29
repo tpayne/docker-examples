@@ -1,0 +1,48 @@
+# This docker file creates an Ubuntu image and installs MediaWiki packages into it
+FROM ubuntu
+
+# Install a couple of supporting packs and do an update...
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update
+RUN apt -y update
+RUN apt -y upgrade
+
+#  MediaWiki...
+RUN apt-get install -y lamp-server^
+
+# RUN apt-get install -y tasksel
+# RUN sudo tasksel install lamp-server
+
+RUN apt-get install -y mediawiki
+RUN apt-get install -y imagemagick texvc
+RUN apt-get install -y php-pear
+
+#  Adding for usefulness...
+RUN apt-get install -y systemd
+RUN apt-get install -y sudo
+RUN apt-get install -y curl
+RUN apt-get install -y net-tools
+RUN apt-get install -y ufw
+RUN apt-get install -y default-jre-headless 
+RUN apt-get install -y nano
+RUN apt-get install -y vim
+
+#  Last update
+RUN apt-get update
+RUN apt -y update
+RUN apt -y upgrade
+
+
+#  Enabling service & checking it starts...
+RUN a2enconf mediawiki
+RUN update-rc.d apache2 enable
+RUN systemctl enable apache2
+RUN service apache2 start
+
+#  Enabling email...
+RUN pear install mail
+RUN pear install Net_SMTP
+
+#  Extra config as needed...
+
+
