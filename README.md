@@ -13,6 +13,7 @@ Kubernetes Example Status: Ready for use
 
 This repo is automatically verified with the `Travis-CI` build system. If you want to see an example of a build,
 click on the button below.
+
 [![Build Status](https://travis-ci.org/tpayne/docker-examples.svg?branch=master)](https://travis-ci.org/tpayne/docker-examples)
 
 
