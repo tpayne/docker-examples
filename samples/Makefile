@@ -4,8 +4,9 @@
 .PHONY: build
 
 all: build         
-	  @echo Built images
+	  @echo Built images in Docker...
 	  docker images
+	  @echo Running processes...
 	  docker ps -a
 
 # Docker images to build...
