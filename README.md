@@ -131,11 +131,12 @@ The following table contains the file descriptions.
 >| `centos/DockerFileDevEnvAdv.docker` | Docker file to setup a Centos container, install a dev environment on it, then create some users plus groups |
 >| `opensuse/DockerFileSuse.docker` | Docker file to setup an OpenSUSE container and install some packages on it |
 >| `ubuntu/DockerFileUbuntu.docker` | Docker file to setup an Ubuntu container and install some packages on it |
->| `ubuntu/DockerFileWebServer.docker` | Docker file to setup an Ubuntu container and a webserver in it |
->| `ubuntu/DockerFilePostgres.docker` | Docker file to setup an Ubuntu container and a PostgreSQL DB server in it |
->| `ubuntu/DockerFileMongoDB.docker` | Docker file to setup an Ubuntu container and a Mongo NoSQL DB server in it |
 >| `ubuntu/DockerFileJenkins.docker` | Docker file to setup an Ubuntu container and a Jenkins CI server in it |
->| `ubuntu/DockerFileJenkins.docker` | Docker file to setup an Ubuntu container and a MediaWiki server in it |
+>| `ubuntu/DockerFileMediaWiki.docker` | Docker file to setup an Ubuntu container and a MediaWiki server in it |
+>| `ubuntu/DockerFileMinecraft.docker` | Docker file to setup an Ubuntu container and a Minecraft server in it |
+>| `ubuntu/DockerFileMongoDB.docker` | Docker file to setup an Ubuntu container and a Mongo NoSQL DB server in it |
+>| `ubuntu/DockerFilePostgres.docker` | Docker file to setup an Ubuntu container and a PostgreSQL DB server in it |
+>| `ubuntu/DockerFileWebServer.docker` | Docker file to setup an Ubuntu container and a webserver in it |
 
 Liability Warning
 =================
