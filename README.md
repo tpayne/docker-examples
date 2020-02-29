@@ -11,6 +11,9 @@ Docker Example Status: Ready for use
 Kubernetes Example Status: Ready for use
 ````
 
+[![Build Status](https://travis-ci.org/tpayne/docker-examples.svg?branch=master)](https://travis-ci.org/tpayne/docker-examples)
+
+
 Kubernetes Examples
 ===================
 The examples contained in this repo run on GCP and standard Kubernetes. They are sequences of `kubectl` commands
