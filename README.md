@@ -63,18 +63,23 @@ So, what next?
 To show and run the containers you have just created, you can use the following commands...
 
 	% docker images
-	REPOSITORY                           TAG                 IMAGE ID            CREATED             SIZE
-	dockerfilesuse.img                   latest              23209be3ae81        7 hours ago         296MB
-	dockerfileubuntu.img                 latest              226c34824369        7 hours ago         425MB
-	dockerfilebasic.img                  latest              bf1c974f5d3f        7 hours ago         386MB
-	dockerfiledevenvadv.img              latest              3bfdcdd6de97        7 hours ago         1.21GB
-	dockerfiledevenv.img                 latest              aee894f2d776        7 hours ago         1.17GB
-	dockerfilesimple.img                 latest              ac814e1b0abb        8 hours ago         1.22MB
-	<none>                               <none>              88f094ff69db        8 hours ago         92.1MB
-	opensuse/leap                        latest              96c3b792ed50        6 days ago          103MB
-	centos                               latest              470671670cac        3 weeks ago         237MB
-	ubuntu                               latest              ccc6e87d482b        3 weeks ago         64.2MB
-	busybox                              latest              6d5fcfe5ff17        6 weeks ago         1.22MB
+        REPOSITORY                TAG                 IMAGE ID            CREATED              SIZE
+        dockerfilesuse.img        latest              8eb7d429b10c        1 second ago         316MB
+        dockerfilepostgres.img    latest              78471a1dc2ff        About a minute ago   486MB
+        dockerfileminecraft.img   latest              e3aaa6b77dae        2 minutes ago        487MB
+        dockerfilemediawiki.img   latest              592aade42d4b        3 minutes ago        2.2GB
+        dockerfilejenkins.img     latest              412a063b5b4e        14 minutes ago       876MB
+        dockerfilemongodb.img     latest              2c9bf248cced        16 minutes ago       981MB
+        dockerfilewebserver.img   latest              4523f5f7003f        17 minutes ago       154MB
+        dockerfileubuntu.img      latest              9dd9893c98e2        18 minutes ago       476MB
+        dockerfilebasic.img       latest              ccd0b50f1482        19 minutes ago       387MB
+        dockerfiledevenvadv.img   latest              a010f42e17a4        19 minutes ago       1.21GB
+        dockerfiledevenv.img      latest              53b4edc3db85        20 minutes ago       1.17GB
+        dockerfilesimple.img      latest              cf3afa09e1a4        22 minutes ago       1.22MB
+        ubuntu                    latest              72300a873c2c        7 days ago           64.2MB
+        opensuse/leap             latest              38924343a351        2 weeks ago          103MB
+        centos                    latest              470671670cac        6 weeks ago          237MB
+        busybox                   latest              6d5fcfe5ff17        2 months ago         1.22MB
 
 The `docker images` command lists all the images you have created. You can then run them via the `docker run` command
 as shown in the example below...
