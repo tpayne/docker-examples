@@ -63,23 +63,23 @@ So, what next?
 To show and run the containers you have just created, you can use the following commands...
 
 	% docker images
-        REPOSITORY                TAG                 IMAGE ID            CREATED              SIZE
-        dockerfilesuse.img        latest              8eb7d429b10c        1 second ago         316MB
-        dockerfilepostgres.img    latest              78471a1dc2ff        About a minute ago   486MB
-        dockerfileminecraft.img   latest              e3aaa6b77dae        2 minutes ago        487MB
-        dockerfilemediawiki.img   latest              592aade42d4b        3 minutes ago        2.2GB
-        dockerfilejenkins.img     latest              412a063b5b4e        14 minutes ago       876MB
-        dockerfilemongodb.img     latest              2c9bf248cced        16 minutes ago       981MB
-        dockerfilewebserver.img   latest              4523f5f7003f        17 minutes ago       154MB
-        dockerfileubuntu.img      latest              9dd9893c98e2        18 minutes ago       476MB
-        dockerfilebasic.img       latest              ccd0b50f1482        19 minutes ago       387MB
-        dockerfiledevenvadv.img   latest              a010f42e17a4        19 minutes ago       1.21GB
-        dockerfiledevenv.img      latest              53b4edc3db85        20 minutes ago       1.17GB
-        dockerfilesimple.img      latest              cf3afa09e1a4        22 minutes ago       1.22MB
-        ubuntu                    latest              72300a873c2c        7 days ago           64.2MB
-        opensuse/leap             latest              38924343a351        2 weeks ago          103MB
-        centos                    latest              470671670cac        6 weeks ago          237MB
-        busybox                   latest              6d5fcfe5ff17        2 months ago         1.22MB
+    REPOSITORY                TAG                 IMAGE ID            CREATED              SIZE
+    dockerfilesuse.img        latest              8eb7d429b10c        1 second ago         316MB
+    dockerfilepostgres.img    latest              78471a1dc2ff        About a minute ago   486MB
+    dockerfileminecraft.img   latest              e3aaa6b77dae        2 minutes ago        487MB
+    dockerfilemediawiki.img   latest              592aade42d4b        3 minutes ago        2.2GB
+    dockerfilejenkins.img     latest              412a063b5b4e        14 minutes ago       876MB
+    dockerfilemongodb.img     latest              2c9bf248cced        16 minutes ago       981MB
+    dockerfilewebserver.img   latest              4523f5f7003f        17 minutes ago       154MB
+    dockerfileubuntu.img      latest              9dd9893c98e2        18 minutes ago       476MB
+    dockerfilebasic.img       latest              ccd0b50f1482        19 minutes ago       387MB
+    dockerfiledevenvadv.img   latest              a010f42e17a4        19 minutes ago       1.21GB
+    dockerfiledevenv.img      latest              53b4edc3db85        20 minutes ago       1.17GB
+    dockerfilesimple.img      latest              cf3afa09e1a4        22 minutes ago       1.22MB
+    ubuntu                    latest              72300a873c2c        7 days ago           64.2MB
+    opensuse/leap             latest              38924343a351        2 weeks ago          103MB
+    centos                    latest              470671670cac        6 weeks ago          237MB
+    busybox                   latest              6d5fcfe5ff17        2 months ago         1.22MB
 
 The `docker images` command lists all the images you have created. You can then run them via the `docker run` command
 as shown in the example below...
@@ -135,12 +135,13 @@ The following table contains the file descriptions.
 >| `centos/DockerFileDevEnv.docker` | Docker file to setup a Centos container and install a dev environment on it |
 >| `centos/DockerFileDevEnvAdv.docker` | Docker file to setup a Centos container, install a dev environment on it, then create some users plus groups |
 >| `opensuse/DockerFileSuse.docker` | Docker file to setup an OpenSUSE container and install some packages on it |
->| `ubuntu/DockerFileUbuntu.docker` | Docker file to setup an Ubuntu container and install some packages on it |
 >| `ubuntu/DockerFileJenkins.docker` | Docker file to setup an Ubuntu container and a Jenkins CI server in it |
+>| `ubuntu/DockerFileKubernetes.docker` | Docker file to setup an Ubuntu container and Docker/Kubernetes into it |
 >| `ubuntu/DockerFileMediaWiki.docker` | Docker file to setup an Ubuntu container and a MediaWiki server in it |
 >| `ubuntu/DockerFileMinecraft.docker` | Docker file to setup an Ubuntu container and a Minecraft server in it |
 >| `ubuntu/DockerFileMongoDB.docker` | Docker file to setup an Ubuntu container and a Mongo NoSQL DB server in it |
 >| `ubuntu/DockerFilePostgres.docker` | Docker file to setup an Ubuntu container and a PostgreSQL DB server in it |
+>| `ubuntu/DockerFileUbuntu.docker` | Docker file to setup an Ubuntu container and install some packages on it |
 >| `ubuntu/DockerFileWebServer.docker` | Docker file to setup an Ubuntu container and a webserver in it |
 
 Liability Warning
