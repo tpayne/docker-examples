@@ -1,6 +1,5 @@
 # This is a simple makefile to help drive the docker process. It is added for convinence
 
-
 .PHONY: build
 
 all: build         
