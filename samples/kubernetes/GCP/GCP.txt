@@ -1,0 +1,38 @@
+# Example gcloud commands...
+
+gcloud app browse 
+gcloud app deploy app.yaml
+
+gcloud auth activate-service-account --key-file credentials.json
+
+gcloud compute firewall-rules create privatenet-allow-icmp-ssh-rdp --direction=INGRESS --priority=1000 --network=privatenet --action=ALLOW --rules=icmp,tcp:22,tcp:3389 --source-ranges=0.0.0.0/0
+gcloud compute firewall-rules list --sort-by=NETWORK
+gcloud compute forwarding-rules list
+gcloud compute images list
+gcloud compute images list --uri 
+gcloud compute instances create privatenet-us-vm --zone=us-central1-c --machine-type=f1-micro --subnet=privatesubnet-us
+gcloud compute instances list
+gcloud compute instances list --sort-by=ZONE
+gcloud compute instances create "my-vm-2" \
+	--machine-type "n1-standard-1" \
+	--image-project "debian-cloud" \
+	--image "debian-9-stretch-v20190213" \
+	--subnet "default"
+gcloud compute machine-types describe f1-micro --zone [YOUR_ZONE]
+gcloud compute machine-types list 
+gcloud compute networks create privatenet --subnet-mode=custom
+gcloud compute networks describe default
+gcloud compute networks list
+gcloud compute networks subnets create privatesubnet-eu --network=privatenet --region=europe-west1 --range=172.20.0.0/20
+gcloud compute networks subnets create privatesubnet-us --network=privatenet --region=us-central1 --range=172.16.0.0/24
+gcloud compute networks subnets list --sort-by=NETWORK
+gcloud compute regions list
+gcloud compute zones list
+
+gcloud config set compute/zone 
+
+gcloud container clusters create webfrontend --zone $MY_ZONE --num-nodes 2
+
+gcloud deployment-manager deployments [delete|update] <name>
+gcloud deployment-manager deployments create advanced-configuration --config application.yaml
+gcloud deployment-manager types list
