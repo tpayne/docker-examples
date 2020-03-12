@@ -1,5 +1,5 @@
-Docker Examples
-===============
+Docker/Kubernetes Examples Repo
+===============================
 
 This repo contains various examples of Docker files that have been created to help people get started with Docker and
 Kubernetes.
