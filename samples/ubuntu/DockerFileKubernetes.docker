@@ -27,7 +27,8 @@ RUN apt-get install -y vim
 RUN apt-get update
 
 #  Enabling service & checking it starts...
-RUN update-rc.d docker enable
+#  
+#RUN update-rc.d docker enable
 RUN systemctl enable docker
 RUN service docker start
 
