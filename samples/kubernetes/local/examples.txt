@@ -28,6 +28,8 @@ kubectl run nginx --image=nginx:latest
 kubectl get pods
 kubectl expose deployment nginx --port=80 --type=LoadBalancer
 kubectl get services
+kubectl get events
 kubectl delete service nginx
 kubectl delete deployment nginx
-
+kubectl delete pod mypod-2a34269d-2816-4d8e-bda9-4629135991d3-bq6dw-zhxnc
+kubectl get pods | gawk '{ printf("\nkubectl delete pod %s",$1);}' | sort -u | sh -xv
