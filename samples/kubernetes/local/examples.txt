@@ -22,3 +22,12 @@ kubectl delete service webserver
 docker image remove localhost:5000/dockerfilewebserver.img:1.0
 docker container stop registry && docker container rm -v registry
 
+# Others
+kubectl version
+kubectl run nginx --image=nginx:latest
+kubectl get pods
+kubectl expose deployment nginx --port=80 --type=LoadBalancer
+kubectl get services
+kubectl delete service nginx
+kubectl delete deployment nginx
+
