@@ -29,8 +29,8 @@ RUN apt-get update
 #  Enabling service & checking it starts...
 #  
 #RUN update-rc.d docker enable
-RUN systemctl enable docker
-RUN service docker start
+#RUN systemctl enable docker
+#RUN service docker start
 
 #  If you wish to run this as a server or pod only, you will need to perform additional
 #  configuration not done here. You will need to decide and configured as needed.
