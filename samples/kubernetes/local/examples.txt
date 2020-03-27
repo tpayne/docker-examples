@@ -5,6 +5,16 @@ docker run -d -p 5000:5000 --restart=always --name registry registry:2
 docker tag dockerfilewebserver.img localhost:5000/dockerfilewebserver.img:1.0
 docker push localhost:5000/dockerfilewebserver.img:1.0
 
+# To make changes to your docker image...
+# - Login to the image and do the changes you want
+docker run -i -t dockerfilewebserver.img:1.0
+# - Then identify the container you want to re-image
+docker container ls 
+# - Then commit the changes and create a new version of the base image
+docker commit <containerId> dockerfilewebserver.img:2.0
+# - Then push the new version to the repo
+docker push localhost:5000/dockerfilewebserver.img:2.0
+
 # Run the service
 kubectl run webserver --image=localhost:5000/dockerfilewebserver.img:1.0
 kubectl expose deployment webserver --port 80 --type LoadBalancer --name webserver --target-port 8000
