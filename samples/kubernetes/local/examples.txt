@@ -17,6 +17,7 @@ docker push localhost:5000/dockerfilewebserver.img:2.0
 
 # Run the service
 kubectl run webserver --image=localhost:5000/dockerfilewebserver.img:1.0
+kubectl create deployment webserver --image=localhost:5000/dockerfilewebserver.img:1.0
 kubectl expose deployment webserver --port 80 --type LoadBalancer --name webserver --target-port 8000
 
 # Test the service
