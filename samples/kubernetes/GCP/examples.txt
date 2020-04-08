@@ -25,3 +25,4 @@ kubectl expose deployment echo-web --port 80 --type LoadBalancer --name echo-web
 kubectl scale deployment echo-web --replicas 2
 kubectl get pods
 kubectl get services
+kubectl get events
