@@ -46,3 +46,4 @@ kubectl delete pod mypod-2a34269d-2816-4d8e-bda9-4629135991d3-bq6dw-zhxnc
 kubectl get pods | gawk '{ printf("\nkubectl delete pod %s",$1);}' | sort -u | sh -xv
 docker help
 kubectl help
+docker --version
