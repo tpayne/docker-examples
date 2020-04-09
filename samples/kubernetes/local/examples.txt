@@ -47,3 +47,4 @@ kubectl get pods | gawk '{ printf("\nkubectl delete pod %s",$1);}' | sort -u | s
 docker help
 kubectl help
 docker --version
+docker help
