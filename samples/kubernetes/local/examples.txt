@@ -48,3 +48,4 @@ docker help
 kubectl help
 docker --version
 docker help
+kubectl help
