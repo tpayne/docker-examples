@@ -1,3 +1,6 @@
+# Install gcloud...
+curl https://sdk.cloud.google.com | bash
+
 # Example gcloud commands...
 gcloud app browse 
 gcloud app deploy app.yaml
