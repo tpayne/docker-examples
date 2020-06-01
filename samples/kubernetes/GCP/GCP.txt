@@ -1,6 +1,12 @@
 # Install gcloud...
 curl https://sdk.cloud.google.com | bash
 
+gcloud config set account <email>
+gcloud auth login
+gcloud config set project <projectId>
+gcloud compute zones list
+gcloud compute zones describe asia-east2-a 
+
 # Example gcloud commands...
 gcloud app browse 
 gcloud app deploy app.yaml
@@ -8,7 +14,9 @@ gcloud app deploy app.yaml
 gcloud auth activate-service-account --key-file credentials.json
 
 # Create/list FW rules
-gcloud compute firewall-rules create privatenet-allow-icmp-ssh-rdp --direction=INGRESS --priority=1000 --network=privatenet --action=ALLOW --rules=icmp,tcp:22,tcp:3389 --source-ranges=0.0.0.0/0
+gcloud compute firewall-rules create privatenet-allow-icmp-ssh-rdp \
+	--direction=INGRESS --priority=1000 --network=privatenet \
+	--action=ALLOW --rules=icmp,tcp:22,tcp:3389 --source-ranges=0.0.0.0/0
 gcloud compute firewall-rules list --sort-by=NETWORK
 
 # List options
@@ -33,6 +41,15 @@ gcloud compute instances create "my-vm-2" \
 	--image "debian-9-stretch-v20190213" \
 	--subnet "default"
 
+gcloud beta compute instances create instance-1 \
+	--zone=us-central1-a --machine-type=f1-micro --subnet=default \
+	--network-tier=PREMIUM --maintenance-policy=MIGRATE \
+	--service-account=<accountName> \
+	--scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/trace.append \
+	--image=debian-10-buster-v20200521 --image-project=debian-cloud \
+	--boot-disk-size=10GB --boot-disk-type=pd-standard --boot-disk-device-name=instance-1 \
+	--no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --reservation-affinity=any
+	
 # Create VPC networks
 gcloud compute networks create privatenet --subnet-mode=custom
 gcloud compute networks subnets create privatesubnet-eu --network=privatenet --region=europe-west1 --range=172.20.0.0/20
