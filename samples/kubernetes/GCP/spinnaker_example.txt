@@ -1,0 +1,52 @@
+# Use Spinnaker installation...
+
+wget https://gke-spinnaker.storage.googleapis.com/sample-app-v2.tgz
+tar xzfv sample-app-v2.tgz
+cd sample-app
+git config --global user.email "$(gcloud config get-value core/account)"
+git config --global user.name "[USERNAME]"
+git init
+git add .
+git commit -m "Initial commit"
+
+# Create GCP src repo & push code to it...
+gcloud source repos create sample-app
+git config credential.helper gcloud.sh
+export PROJECT=$(gcloud info --format='value(config.project)')
+git remote add origin https://source.developers.google.com/p/$PROJECT/r/sample-app
+git push origin master
+
+# In GCP Cloud Build configure trigger for sample-app...
+Name:sample-app-tags
+Event: Push new tag
+Tag: v.*
+Build configuration: Cloud Build configuration file (yaml or json)
+Cloud Build configuration file location: /cloudbuild.yaml
+
+# Prepare your Kubernetes Manifests for use in Spinnaker
+export PROJECT=$(gcloud info --format='value(config.project)')
+gsutil mb -l us-central1 gs://$PROJECT-kubernetes-manifests
+gsutil versioning set on gs://$PROJECT-kubernetes-manifests
+sed -i s/PROJECT/$PROJECT/g k8s/deployments/*
+git commit -a -m "Set project ID"
+
+# Build image
+git tag v1.0.0
+git push --tags
+curl -LO https://storage.googleapis.com/spinnaker-artifacts/spin/1.14.0/linux/amd64/spin
+chmod +x spin
+
+# Create spinnaker app
+./spin application save --application-name sample \
+                        --owner-email "$(gcloud config get-value core/account)" \
+                        --cloud-providers kubernetes \
+                        --gate-endpoint http://localhost:8080/gate
+export PROJECT=$(gcloud info --format='value(config.project)')
+sed s/PROJECT/$PROJECT/g spinnaker/pipeline-deploy.json > pipeline.json
+./spin pipeline save --gate-endpoint http://localhost:8080/gate -f pipeline.json
+
+# Trigger spinnaker app
+sed -i 's/orange/blue/g' cmd/gke-info/common-service.go
+git commit -a -m "Change color to blue"
+git tag v1.0.1
+git push --tags
