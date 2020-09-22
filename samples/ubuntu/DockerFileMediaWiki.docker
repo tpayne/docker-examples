@@ -14,7 +14,7 @@ RUN apt-get install -y lamp-server^
 # RUN sudo tasksel install lamp-server
 
 RUN apt-get install -y mediawiki
-RUN apt-get install -y imagemagick texvc
+RUN apt-get install -y imagemagick
 RUN apt-get install -y php-pear
 
 #  Adding for usefulness...
