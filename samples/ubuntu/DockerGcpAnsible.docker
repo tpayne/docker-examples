@@ -1,9 +1,0 @@
-# This docker file creates an Ubuntu image and installs various packages into it
-FROM ubuntu:latest
-
-# Install a couple of supporting packs and do an update...
-ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get update
-RUN apt-get install google-cloud-sdk-app-engine-java apache-libcloud -y
-RUN apt-get install ansible -y
-RUN apt-get update
