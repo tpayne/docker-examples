@@ -13,5 +13,6 @@ RUN apt-get install google-cloud-sdk -y
 RUN apt-get install apt-get install google-cloud-sdk-app-engine-java google-cloud-sdk-app-engine-python \
         google-cloud-sdk-pubsub-emulator google-cloud-sdk-bigtable-emulator \
         google-cloud-sdk-datastore-emulator kubectl apache-libcloud -y
-RUN apt-get install openssh-server openssh-client nano vim ansible -y
+RUN apt-get install ssh iptables nano vim ansible -y
+
 RUN apt-get update
