@@ -15,3 +15,5 @@ RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.c
 RUN chown -R _apt:root /var/lib/apt/lists
 RUN apt update && apt install -qy google-cloud-sdk
 RUN apt-get install ssh iptables nano vim ansible -y
+
+
