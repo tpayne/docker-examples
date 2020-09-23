@@ -4,28 +4,20 @@ FROM ubuntu:latest
 # Install a couple of supporting packs and do an update...
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
-RUN apt-get install curl gnupg -y
+RUN apt-get install curl wget gnupg -y
 
 RUN rm -fr /etc/apt/sources.list.d/google-cloud-sdk.list
 
 # Add the Cloud SDK distribution URI as a package source
-RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
-	apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+wget -q -O - packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+RUN sh -c 'echo deb https://packages.cloud.google.com/apt cloud-sdk main > /etc/apt/sources.list.d/google-cloud-sdk.list'
 
 # Fix the zany problem of user apt not being able to access a file from curl
 # https://askubuntu.com/questions/908800/what-does-this-synaptic-error-message-mean
 RUN apt-get install apt-transport-https ca-certificates -y
 
-RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" |\
-	tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-
-RUN echo "deb https://packages.cloud.google.com/apt cloud-sdk main" |\
-	tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-
-RUN chown -R _apt:root /var/lib/apt/lists
 RUN apt-get install -qy google-cloud-sdk
 RUN apt-get install google-cloud-sdk-app-engine-java
-RUN rm -fr /etc/apt/sources.list.d/google-cloud-sdk.list
 RUN apt-get install ssh iptables nano vim ansible apache-libcloud -y
 
 RUN apt-get update
