@@ -23,7 +23,7 @@ RUN echo "deb https://packages.cloud.google.com/apt cloud-sdk main" |\
 	tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 
 RUN chown -R _apt:root /var/lib/apt/lists
-
+RUN rm -fr /etc/apt/sources.list.d/google-cloud-sdk.list
 RUN apt update && apt-get install -qy google-cloud-sdk
 RUN apt-get install ssh iptables nano vim ansible apache-libcloud -y
 RUN apt-get install google-cloud-sdk-app-engine-java
