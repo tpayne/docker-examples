@@ -9,8 +9,8 @@ RUN apt-get install curl gnupg -y
 RUN rm -fr /etc/apt/sources.list.d/google-cloud-sdk.list
 
 # Add the Cloud SDK distribution URI as a package source
-# RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" \
-# 	>> /etc/apt/sources.list.d/google-cloud-sdk.list
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" \
+	>> /etc/apt/sources.list.d/google-cloud-sdk.list
 
 # Fix the zany problem of user apt not being able to access a file from curl
 # https://askubuntu.com/questions/908800/what-does-this-synaptic-error-message-mean
@@ -26,8 +26,8 @@ RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
 
 RUN chown -R _apt:root /var/lib/apt/lists
 
-RUN apt-get install google-cloud-sdk-app-engine-java
 RUN apt update && apt-get install -qy google-cloud-sdk
 RUN apt-get install ssh iptables nano vim ansible apache-libcloud -y
+RUN apt-get install google-cloud-sdk-app-engine-java
 
 RUN apt-get update
