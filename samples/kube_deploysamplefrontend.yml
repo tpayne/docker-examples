@@ -1,0 +1,42 @@
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "deploy-frontexample"
+  namespace: "default"
+  labels:
+    app: "deploy-frontexample"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "deploy-frontexample"
+  template:
+    metadata:
+      labels:
+        app: "deploy-frontexample"
+    spec:
+      containers:
+      - name: "samples-frontend"
+        image: "gcr.io/macro-mender-279016/samples_frontend_webapp:1.0"
+
+---
+apiVersion: "autoscaling/v2beta1"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "deploy-frontexample-hpa-eesi"
+  namespace: "default"
+  labels:
+    app: "deploy-frontexample"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "deploy-frontexample"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      targetAverageUtilization: 80

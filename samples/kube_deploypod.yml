@@ -1,0 +1,22 @@
+--- 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example-pod-deployment
+  labels: 
+    app: sample-db
+spec: 
+  containers: 
+    - name: db-layer-mongodb
+      image: "gcr.io/macro-mender-279016/samples_dbbackend_mondb:1.0"
+      ports: 
+        - containerPort: 27017
+    - name: db-layer-postgresdb
+      image: "gcr.io/macro-mender-279016/samples_dbbackend_postgresdb:1.0"
+      ports: 
+        - containerPort: 5432
+    - name: frontend-layer
+      image: "gcr.io/macro-mender-279016/samples_frontend_webapp:1.0"
+      ports: 
+        - containerPort: 80
+        - containerPort: 443

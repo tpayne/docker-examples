@@ -1,0 +1,46 @@
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "deploy-example"
+  namespace: "default"
+  labels:
+    app: "deploy-example"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "deploy-example"
+  template:
+    metadata:
+      labels:
+        app: "deploy-example"
+    spec:
+      containers:
+      - name: "samples-dbbackend-mondb"
+        image: "gcr.io/macro-mender-279016/samples_dbbackend_mondb:1.0"
+      - name: "samples-dbbackend-postgresdb"
+        image: "gcr.io/macro-mender-279016/samples_dbbackend_postgresdb:1.0"
+      - name: "samples-frontend"
+        image: "gcr.io/macro-mender-279016/samples_frontend_webapp:1.0"
+
+---
+apiVersion: "autoscaling/v2beta1"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "deploy-example-hpa-eesi"
+  namespace: "default"
+  labels:
+    app: "deploy-example"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "deploy-example"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      targetAverageUtilization: 80

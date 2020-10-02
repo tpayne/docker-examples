@@ -7,7 +7,6 @@ all: build
 # Docker images to build...
 DOCKERFILES=\
 	DockerFileJenkins.img \
-	DockerFileGcpAnsible.img \
 	DockerFileKubernetes.img \
 	DockerFileMediaWiki.img \
 	DockerFileMinecraft.img \

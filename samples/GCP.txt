@@ -1,0 +1,131 @@
+# 
+# Example commands to use GCP clusters 
+# 
+
+# List the valid regions...
+gcloud compute regions list
+
+# Set the region you want...
+gcloud config set compute/zone europe-west1
+gcloud config list
+
+# List machine types available in your region...
+gcloud compute machine-types list | grep europe-west1
+
+# List any GKE servers running...
+gcloud container clusters list
+
+# List image types...
+gcloud compute images list
+
+# List supported image types...
+gcloud container get-server-config
+
+# Create a simple GKE cluster...
+# gcloud container clusters create testcluster \
+#     --machine-type=n1-standard-1 \
+#     --enable-stackdriver-kubernetes \
+#     --max-pods-per-node=5
+
+gcloud container clusters create "testcluster" \
+    --zone "europe-west1" \
+    --no-enable-basic-auth \
+    --cluster-version "1.15.12-gke.20" \
+    --machine-type "n1-standard-1" \
+    --image-type "UBUNTU_CONTAINERD" \
+    --disk-type "pd-standard" \
+    --disk-size "100" \
+    --metadata disable-legacy-endpoints=true \
+    --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" \
+    --num-nodes "3" --enable-stackdriver-kubernetes \
+    --enable-ip-alias --network "projects/macro-mender-279016/global/networks/default" \
+    --subnetwork "projects/macro-mender-279016/regions/europe-west1/subnetworks/default" \
+    --default-max-pods-per-node "100" \
+    --no-enable-master-authorized-networks \
+    --addons HorizontalPodAutoscaling,HttpLoadBalancing \
+    --enable-autoupgrade --enable-autorepair \
+    --max-surge-upgrade 1 \
+    --max-unavailable-upgrade 0
+
+gcloud container clusters list
+
+export PROJECT="`gcloud config list 2>&1 | grep project | sed 's| ||g' | awk -F"=" '{ print $2 }'`"
+export PROJECT=$(gcloud info --format='value(config.project)')
+
+# Want notifications of updates to the container registry...
+gcloud pubsub topics create projects/$PROJECT/topics/gcr
+gcloud pubsub subscriptions create container-changed \
+    --topic projects/${PROJECT}/topics/gcr
+
+gcloud pubsub subscriptions list
+
+gcloud pubsub subscriptions add-iam-policy-binding container-changed \
+    --role roles/pubsub.subscriber \
+    --member user:alex.gray255@googlemail.com
+
+gcloud pubsub subscriptions describe projects/${PROJECT}/subscriptions/container-changed
+gcloud pubsub subscriptions get-iam-policy container-changed
+
+# Set context to cluster so you can use it...
+gcloud container clusters get-credentials testcluster1 --zone europe-west1-b 
+kubectl get nodes 
+kubectl get services
+
+# Create a simple set of images...
+docker-compose -f docker-compose-sample.yml build
+docker-compose -f docker-compose-sample.yml up
+
+# Get Docker to use GCP repos...
+# This will update the file ~/.docker/config.json
+gcloud auth configure-docker
+
+# Tag and push the images to GCP repo...
+docker tag samples_dbbackend_mondb gcr.io/${PROJECT}/samples_dbbackend_mondb:1.0
+docker tag samples_dbbackend_postgresdb gcr.io/${PROJECT}/samples_dbbackend_postgresdb:1.0
+docker push gcr.io/${PROJECT}/samples_dbbackend_mondb:1.0
+docker push gcr.io/${PROJECT}/samples_dbbackend_postgresdb:1.0
+
+docker tag samples_frontend_webapp gcr.io/${PROJECT}/samples_frontend_webapp:1.0
+docker push gcr.io/${PROJECT}/samples_frontend_webapp:1.0
+
+gcloud container images list
+gcloud container images list-tags gcr.io/${PROJECT}/samples_dbbackend_mondb
+gcloud container images list-tags gcr.io/${PROJECT}/samples_dbbackend_postgresdb
+
+# This will "crash" as pods will exit
+kubectl delete pod example-pod-deployment
+kubectl create -f kube_deploypod.yml
+kubectl get pods
+kubectl get events
+kubectl delete pod example-pod-deployment
+
+# This will work
+kubectl delete pod example-frontpod-deployment
+kubectl create -f kube_deployfrontendpod.yml
+kubectl get pods
+kubectl get events
+kubectl delete pod example-frontpod-deployment
+
+# Deployment yaml example - not work as pods will exit
+kubectl create -f kube_deploysample.yml
+kubectl get deployments
+kubectl get events
+kubectl expose deployment deploy-example --type LoadBalancer --name deploy-example --port 80
+kubectl get services
+kubectl delete service deploy-example
+kubectl delete deployment deploy-example
+
+# Deployment yaml example 
+kubectl create -f kube_deploysamplefrontend.yml
+kubectl get deployments
+kubectl get events
+kubectl expose deployment deploy-frontexample --type LoadBalancer --name deploy-frontexample --port 80,443
+kubectl get services
+kubectl delete service deploy-frontexample
+kubectl delete deployment deploy-frontexample
+
+gcloud container clusters delete "testcluster"
+
+
+
+

@@ -9,7 +9,6 @@ RUN apt-get update
 RUN apt-get install postgresql postgresql-contrib -y
 
 #  Adding for usefulness...
-RUN apt-get install -y default-jre-headless curl 
 RUN apt-get install -y systemd
 RUN apt-get install -y sudo
 RUN apt-get install -y curl
@@ -23,6 +22,7 @@ RUN update-rc.d postgresql enable
 RUN systemctl enable postgresql
 RUN service postgresql start
 
+EXPOSE 5432
 # Postgres database now ready for creation
 # 
 # The specifics of the DB and setup are left to the user to define

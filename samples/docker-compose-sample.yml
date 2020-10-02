@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+   dbbackend_mondb:
+     build: 
+       context: ./ubuntu
+       dockerfile: DockerFileMongoDB.docker
+     depends_on:
+       - dbbackend_postgresdb
+
+   dbbackend_postgresdb:
+     build: 
+       context: ./ubuntu
+       dockerfile: DockerFilePostgres.docker
+
+   frontend_webapp:
+     build: 
+       context: ./ubuntu
+       dockerfile: DockerFileWebServer.docker

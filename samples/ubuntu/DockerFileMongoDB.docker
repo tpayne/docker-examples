@@ -14,9 +14,7 @@ RUN apt-get install -y sudo
 RUN apt-get install -y curl
 RUN apt-get install -y net-tools
 RUN apt-get install -y ufw
-RUN apt-get install -y default-jre-headless 
 RUN apt-get install -y nano
-RUN apt-get install -y vim
 
 #  Last update
 RUN apt-get update
@@ -35,6 +33,7 @@ RUN service mongodb start
 #  
 RUN ufw allow 27017
 
+EXPOSE 27017
 # Mongo database now ready for creation
 # 
 # The specifics of the DB and setup are left to the user to define
