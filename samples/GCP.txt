@@ -61,7 +61,7 @@ gcloud pubsub subscriptions list
 
 gcloud pubsub subscriptions add-iam-policy-binding container-changed \
     --role roles/pubsub.subscriber \
-    --member user:alex.gray255@googlemail.com
+    --member user:<usrId>
 
 gcloud pubsub subscriptions describe projects/${PROJECT}/subscriptions/container-changed
 gcloud pubsub subscriptions get-iam-policy container-changed
@@ -92,7 +92,7 @@ gcloud container images list
 gcloud container images list-tags gcr.io/${PROJECT}/samples_dbbackend_mondb
 gcloud container images list-tags gcr.io/${PROJECT}/samples_dbbackend_postgresdb
 
-# This will "crash" as pods will exit
+# This will "crash" as pods will exit - pod deply only
 kubectl delete pod example-pod-deployment
 kubectl create -f kube_deploypod.yml
 kubectl get pods
