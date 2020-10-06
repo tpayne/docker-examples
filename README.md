@@ -152,6 +152,9 @@ or otherwise about the accuracy or functionality of the examples.
 You use them at your own risk. If anything results to your machine or environment or anything else as a 
 result of ignoring this warning, then the fault is yours only and has nothing to do with me.
 
+Note - The docker files worked at time of creation, but I often find that Ubuntu repos often get "screwed", so
+do not be surprised if the docker files need maintenance. I might do this sometimes, but only as I need to.
+
 Licensing
 =========
 This software is licensed using the terms and provisions of the [MIT license](https://en.wikipedia.org/wiki/MIT_License).
