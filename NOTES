@@ -1,5 +1,7 @@
 Notes:
-- Differences between CMD, ENTRYPOINT, RUN 
+- Differences between CMD, ENTRYPOINT, RUN? 
 -- CMD is a default command executed when a container is run, but can be overriden by the docker run command
 -- ENTRYPOINT is the command executed when a container is run. It cannot be overriden
 -- RUN is used in the construction of a container to add new layers
+- Using POD or DEPLOYMENT YML?
+-- Use DEPLOYMENT YML as it allows deployment pods to be restarted if they fail. Direct Pod deployments (Kind: Pod) will not be restarted
