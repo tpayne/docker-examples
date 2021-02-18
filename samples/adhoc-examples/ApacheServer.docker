@@ -3,11 +3,13 @@ FROM ubuntu:latest
 
 ARG DEBIAN_FRONTEND=noninteractive
 
+# Install packages
 RUN apt-get update 
 RUN apt-get install apache2 -y
 RUN apt-get install apache2-utils -y 
 RUN apt-get clean 
 
+# Temp directory setup
 WORKDIR /tmp/
 
 # Run webserver and expose standard ports
