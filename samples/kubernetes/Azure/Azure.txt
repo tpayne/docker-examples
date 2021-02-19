@@ -1,0 +1,9 @@
+# Azure AKS commands of use...
+
+az login
+az aks install-cli
+az aks get-credentials --resource-group <rgName> --name <clusterName>
+az aks list --query [].name
+
+kubectl get pods
+
