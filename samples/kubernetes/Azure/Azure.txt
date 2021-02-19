@@ -4,6 +4,7 @@ az login
 az aks install-cli
 az aks get-credentials --resource-group <rgName> --name <clusterName>
 az aks list --query [].name
-
 kubectl get pods
 
+az aks start --resource-group <rgName> --name <clusterName>
+az aks stop --resource-group <rgName> --name <clusterName>
