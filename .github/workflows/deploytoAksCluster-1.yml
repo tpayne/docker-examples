@@ -1,0 +1,50 @@
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    
+    - uses: azure/docker-login@v1
+      with:
+        login-server: testproj002.azurecr.io
+        username: ${{ secrets.acr_testproj002_username }}
+        password: ${{ secrets.acr_testproj002_password }}
+    
+    - name: Build and push image to ACR
+      id: build-image
+      run: |
+        docker build "$GITHUB_WORKSPACE/samples/adhoc-examples/" -f  "samples/adhoc-examples/MongoDB.docker" -t testproj002.azurecr.io/testkuber001:${{ github.sha }} --label dockerfile-path=samples/adhoc-examples/MongoDB.docker
+        docker push testproj002.azurecr.io/testkuber001:${{ github.sha }}
+    
+    - uses: azure/k8s-set-context@v1
+      with:
+         kubeconfig: ${{ secrets.aks_testkuber001_kubeConfig }}
+      id: login
+    
+    - name: Create namespace
+      run: |
+        namespacePresent=`kubectl get namespace | grep testapps | wc -l`
+        if [ $namespacePresent -eq 0 ]
+        then
+            echo `kubectl create namespace testapps`
+        fi
+
+    - uses: azure/k8s-create-secret@v1
+      with:
+        namespace: testapps
+        container-registry-url: testproj002.azurecr.io
+        container-registry-username: ${{ secrets.acr_testproj002_username }}
+        container-registry-password: ${{ secrets.acr_testproj002_password }}
+        secret-name: testkuber001dockerauth
+       
+    - uses: azure/k8s-deploy@v1.2
+      with:
+        namespace: testapps
+        manifests: |
+          manifests/deployment-1.yml
+          manifests/service-1.yml
+        images: |
+          testproj002.azurecr.io/testkuber001:${{ github.sha }}
+        imagepullsecrets: |
+          testkuber001dockerauth
