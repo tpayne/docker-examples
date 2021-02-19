@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: "testkuber001-c640"
+    labels:
+        app: "testkuber001-c640"
+spec:
+    type: LoadBalancer
+    ports:
+    - port: 27017
+      targetPort: 27017
+      protocol: TCP
+      name: http
+    selector:
+        app: "testkuber001-c640"
