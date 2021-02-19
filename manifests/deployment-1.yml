@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "testkuber001-c640"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "testkuber001-c640"
+  template:
+    metadata:
+      labels:
+        app: "testkuber001-c640"
+    spec:
+      containers:
+        - name: "testkuber001-c640"
+          image: "testproj002.azurecr.io/testkuber001"
+          ports:
+          - containerPort: 27017
