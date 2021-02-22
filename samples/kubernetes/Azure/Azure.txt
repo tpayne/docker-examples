@@ -131,3 +131,5 @@ az aks update \
   --enable-cluster-autoscaler \
   --min-count 3 \
   --max-count 5
+
+kubectl config delete-context $AKS_CLUSTER_NAME
