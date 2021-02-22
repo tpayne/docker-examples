@@ -121,4 +121,6 @@ az aks enable-addons     \
   --name $AKS_CLUSTER_NAME     \
   --addons monitoring     \
   --workspace-resource-id $WORKSPACE_ID
-  
+ 
+kubectl get endpoints <appName> --namespace <k8nameSpace>
+kubectl apply -f <name> --namespace <k8nameSpace>
