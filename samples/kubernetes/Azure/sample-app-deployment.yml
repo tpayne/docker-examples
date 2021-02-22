@@ -38,3 +38,17 @@ spec:
           httpGet:
             port: 3000
             path: /healthz
+
+# Create a service for the deployment
+apiVersion: v1
+kind: Service
+metadata:
+  name: <appName>
+spec:
+  selector:
+    app: <appName>
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+  type: ClusterIP
