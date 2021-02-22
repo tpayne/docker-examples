@@ -27,7 +27,7 @@ spec:
           limits: # maximum resources allocated
             cpu: 500m
             memory: 512Mi
-
+---
 # Frontend service
 apiVersion: v1
 kind: Service
