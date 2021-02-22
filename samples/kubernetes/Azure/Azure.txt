@@ -34,6 +34,10 @@ SUBNET_ID=$(az network vnet subnet show \
     
 AKS_CLUSTER_NAME=aksworkshop-123
 
+# Cluster networking is either kubenet or Azure CNI
+# - Kubenet is K8 default - assigns IPs to nodes from subnet, pod IPs get assigned from another address space. NAT routing is used
+# - Azure CNI - assigns pod IPs from the same address space. Can access pods directly
+
 az aks create --resource-group $RESOURCE_GROUP --name $AKS_CLUSTER_NAME \
   --vm-set-type VirtualMachineScaleSets --node-count 2 --load-balancer-sku standard \
   --location $REGION_NAME --kubernetes-version $VERSION --network-plugin azure \
