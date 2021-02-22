@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: <appName>
+spec:
+  selector:
+    matchLabels:
+      app: <appName>
+  template:
+    metadata:
+      labels:
+        app: <appName> # the label for the pods and the deployments
+    spec:
+      containers:
+      - name: <appName>
+        image: <acrname>.azurecr.io/<appName>:v1 # IMPORTANT: update with your own repository
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080 # the application listens to this port
+        env:
+        - name: API # the application expects to connect to the API at this endpoint
+          value: http://<appName>.<appName>.svc.cluster.local
+        resources:
+          requests: # minimum resources required
+            cpu: 250m
+            memory: 64Mi
+          limits: # maximum resources allocated
+            cpu: 500m
+            memory: 512Mi
+
+# Frontend service
+apiVersion: v1
+kind: Service
+metadata:
+  name: <appName>
+spec:
+  selector:
+    app: <appName>
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: LoadBalancer
