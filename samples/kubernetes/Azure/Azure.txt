@@ -59,3 +59,62 @@ az aks update \
   --resource-group $RESOURCE_GROUP    \
   --attach-acr $ACR_NAME
   
+# Run some helm commands (helm is advanced package manager for K8s)
+# - add helm repo to list
+# - search repo for examples
+# - install mongodb package with some defaults
+# - install secret for db to use
+
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm search repo bitnami
+
+helm install ratings bitnami/mongodb --namespace <k8nameSpace> \
+  --set auth.username=<userName>,auth.password=<passwd>,auth.database=<dbName>
+  
+kubectl create secret generic mongosecret --namespace <k8nameSpace>  \
+  --from-literal=MONGOCONNECTION="mongodb://<userName>:<passwd>@<dbName>-mongodb.<dbName>:27017/<dbName>"
+  
+kubectl describe secret mongosecret --namespace <k8nameSpace>
+
+# Install ingress controller
+# An ingress controller is a level 7 LB - allows proxy, routing control, reverse proxy etc.
+kubectl create namespace ingress
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+helm install nginx-ingress ingress-nginx/ingress-nginx \
+  --namespace ingress     \
+  --set controller.replicaCount=2   \
+  --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux     \
+  --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
+
+# Install a cert manager
+kubectl create namespace cert-manager
+helm repo add jetstack https://charts.jetstack.io
+helm repo update
+kubectl apply --validate=false \
+  -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.14/deploy/manifests/00-crds.yaml
+helm install cert-manager \
+  --namespace cert-manager \
+  --version v0.14.0     \
+  jetstack/cert-manager
+  
+kubectl describe cert ratings-web-cert --namespace <k8nameSpace>
+
+WORKSPACE=aksws
+az resource create --resource-type Microsoft.OperationalInsights/workspaces         \
+  --name $WORKSPACE         \
+  --resource-group $RESOURCE_GROUP   \
+  --location $REGION_NAME   \
+  --properties '{}' -o table
+  
+WORKSPACE_ID=$(az resource show --resource-type Microsoft.OperationalInsights/workspaces \
+    --resource-group $RESOURCE_GROUP \
+    --name $WORKSPACE \
+    --query "id" -o tsv)
+    
+az aks enable-addons     \
+  --resource-group $RESOURCE_GROUP     \
+  --name $AKS_CLUSTER_NAME     \
+  --addons monitoring     \
+  --workspace-resource-id $WORKSPACE_ID
+  
