@@ -2,9 +2,60 @@
 
 az login
 az aks install-cli
+
+# Set up kubectl to work with AKS...
 az aks get-credentials --resource-group <rgName> --name <clusterName>
 az aks list --query [].name
 kubectl get pods
 
 az aks start --resource-group <rgName> --name <clusterName>
 az aks stop --resource-group <rgName> --name <clusterName>
+
+# Sample setup...
+REGION_NAME=eastus
+RESOURCE_GROUP=testaks
+SUBNET_NAME=aks-subnet
+VNET_NAME=aks-vnet
+
+az group create --name $REGION_NAME --location $REGION_NAME
+az network vnet create \
+  --resource-group $RESOURCE_GROUP \
+  --location $REGION_NAME     \
+  --name $VNET_NAME    \
+  --address-prefixes 10.0.0.0/8    \
+  --subnet-name $SUBNET_NAME     \
+  --subnet-prefixes 10.240.0.0/16
+  
+SUBNET_ID=$(az network vnet subnet show \
+    --resource-group $RESOURCE_GROUP \
+    --vnet-name $VNET_NAME \
+    --name $SUBNET_NAME \
+    --query id -o tsv)
+    
+AKS_CLUSTER_NAME=aksworkshop-123
+
+az aks create --resource-group $RESOURCE_GROUP --name $AKS_CLUSTER_NAME \
+  --vm-set-type VirtualMachineScaleSets --node-count 2 --load-balancer-sku standard \
+  --location $REGION_NAME --kubernetes-version $VERSION --network-plugin azure \
+  --vnet-subnet-id $SUBNET_ID --service-cidr 10.2.0.0/24 --dns-service-ip 10.2.0.10 \
+  --docker-bridge-address 172.17.0.1/16 --generate-ssh-keys
+  
+az aks get-credentials --resource-group $RESOURCE_GROUP --name $AKS_CLUSTER_NAME
+
+ACR_NAME=acrtest
+
+az acr create \
+  --resource-group $RESOURCE_GROUP \ 
+  --location $REGION_NAME \
+  --name $ACR_NAME --sku Standard
+ 
+az acr build --resource-group $RESOURCE_GROUP --registry $ACR_NAME  \
+  --image <imageName> (finds it from local Dockerfile)
+  
+az acr repository list --name $ACR_NAME --output table
+
+az aks update \
+  --name $AKS_CLUSTER_NAME     \
+  --resource-group $RESOURCE_GROUP    \
+  --attach-acr $ACR_NAME
+  
