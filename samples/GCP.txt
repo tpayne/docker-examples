@@ -9,6 +9,9 @@ gcloud compute regions list
 gcloud config set compute/zone europe-west1
 gcloud config list
 
+# List networks in json - just the names - like --query in AZ...
+gcloud compute networks list --format json --flatten=name
+
 # List machine types available in your region...
 gcloud compute machine-types list | grep europe-west1
 
