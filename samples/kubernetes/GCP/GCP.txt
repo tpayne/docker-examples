@@ -58,7 +58,11 @@ gcloud compute networks subnets create privatesubnet-us --network=privatenet --r
 # GKE Clusters and deployments
 gcloud config set compute/zone 
 
+# Create a cluster and set context to it, show contexts in use and current one
 gcloud container clusters create webfrontend --zone $MY_ZONE --num-nodes 2
+gcloud container clusters get-credentials webfrontend
+kubectl config get-contexts
+kubectl config current-context 
 
 gcloud deployment-manager deployments [delete|update] <name>
 gcloud deployment-manager deployments create advanced-configuration --config application.yaml
