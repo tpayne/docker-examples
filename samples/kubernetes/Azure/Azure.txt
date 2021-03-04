@@ -132,4 +132,9 @@ az aks update \
   --min-count 3 \
   --max-count 5
 
+# Change contexts via config command...
+kubectl config current-context
+kubectl config get-contexts
+kubectl config use-context <context>
 kubectl config delete-context $AKS_CLUSTER_NAME
+
