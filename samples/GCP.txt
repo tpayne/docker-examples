@@ -102,6 +102,9 @@ kubectl get pods
 kubectl get events
 kubectl delete pod example-pod-deployment
 
+# Create a default deployment template...
+kubectl create deployment webserver --image=nginx:latest --dry-run=client -o yaml
+
 # This will work
 kubectl delete pod example-frontpod-deployment
 kubectl create -f kube_deployfrontendpod.yml
