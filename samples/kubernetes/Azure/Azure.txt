@@ -104,6 +104,20 @@ helm install cert-manager \
   
 kubectl describe cert ratings-web-cert --namespace <k8nameSpace>
 
+# View any pending certs and approve (or reject) them...
+kubectl get csr --namespace <k8nameSpace>
+kubectl certificate [approve|reject] <name> --namespace <k8nameSpace>
+kubectl config view
+
+# View status of deployments
+kubectl rollout history deployment/<deploymentName>
+kubectl rollout status deployment/<deploymentName>
+kubectl rollout undo deployment/<deploymentName>
+
+# Key value pair config maps (putting variables into env)
+kubectl create configmap <mapName> --from-literal=<key>=<value>
+
+
 WORKSPACE=aksws
 az resource create --resource-type Microsoft.OperationalInsights/workspaces         \
   --name $WORKSPACE         \
@@ -125,6 +139,8 @@ az aks enable-addons     \
 kubectl get endpoints <appName> --namespace <k8nameSpace>
 kubectl apply -f <name> --namespace <k8nameSpace>
 
+kubectl get pods -o wide
+
 az aks update \
   --resource-group $RESOURCE_GROUP \
   --name $AKS_CLUSTER_NAME  \
@@ -132,8 +148,32 @@ az aks update \
   --min-count 3 \
   --max-count 5
 
+kubectl get all
+
+# Cordon and draining nodes manually...
+kubectl get nodes
+kubectl drain <node> (will drain the node and then mark it as cordon)
+kubectl cordon <node> (will just mark node as cordoned)
+
+# Dump cluster definitions as YAML...
+kubectl get all --all-namespaces -o yaml 
+
+# Service accounts are for service/service interactions
+kubectl create serviceaccount <name>
+
+# Roles
+kubectl api-resources # View resources
+kubectl get roles 
+kubectl get rolebindings
+kubectl create role foo --verb=get,list,watch --resource=pods,pods/status
+
+# Volumes
+ kubectl get pv --all-namespaces
+
+
 # Change contexts via config command...
 kubectl config current-context
+kubectl config view
 kubectl config get-contexts
 kubectl config use-context <context>
 kubectl config delete-context $AKS_CLUSTER_NAME
