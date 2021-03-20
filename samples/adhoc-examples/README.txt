@@ -6,3 +6,10 @@ export PROJECT=$(gcloud info --format='value(config.project)')
 
 docker tag apache_server:1.0 gcr.io/${PROJECT}/apache_server:latest
 docker push gcr.io/${PROJECT}/apache_server:latest
+
+# Multistage build...
+docker build . -f multistage-build.docker -t sample_multi:1.0
+docker run -t sample_multi:1.0 /binary
+
+# Cleanup...
+docker system prune --all -f 
