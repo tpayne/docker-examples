@@ -1,0 +1,11 @@
+# Simple multi-stage example for building a CPP prog...
+FROM alpine:latest as builder
+RUN apk --no-cache add build-base
+
+FROM builder as build1
+COPY sample.cpp source1.cpp
+RUN g++ -o /binary source1.cpp
+
+FROM builder as build2
+COPY --from=build1 /source1.cpp source2.cpp
+RUN g++ -o /binary source2.cpp
