@@ -3,6 +3,9 @@
 az login
 az aks install-cli
 
+# Resource template dump...
+az group export -n <rg>
+
 # Set up kubectl to work with AKS...
 az aks get-credentials --resource-group <rgName> --name <clusterName>
 az aks list --query [].name
