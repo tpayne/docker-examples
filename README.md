@@ -17,7 +17,7 @@ This repo is automatically verified with the `Travis-CI` build system. If you wa
 click on the button below.
 
 [![Build Status](https://travis-ci.org/tpayne/docker-examples.svg?branch=master)](https://travis-ci.org/tpayne/docker-examples)
-
+[![CI](https://github.com/tpayne/docker-examples/actions/workflows/run-build.yml/badge.svg)](https://github.com/tpayne/docker-examples/actions/workflows/run-build.yml)
 
 Kubernetes Examples
 ===================
