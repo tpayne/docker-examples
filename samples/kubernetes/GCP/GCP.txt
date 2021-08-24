@@ -11,7 +11,7 @@ gcloud compute zones describe asia-east2-a
 gcloud iam service-accounts list
 gcloud iam service-accounts create <saName>
 export PROJECT=$(gcloud info --format='value(config.project)')
-export SA_EMAIL=$(gcloud iam service-accounts list --filter="name:jenkins-gce" \
+export SA_EMAIL=$(gcloud iam service-accounts list --filter="name:<saName>" \
  --format='value(email)')
 gcloud projects add-iam-policy-binding --member serviceAccount:$SA_EMAIL \
  --role roles/compute.instanceAdmin $PROJECT
