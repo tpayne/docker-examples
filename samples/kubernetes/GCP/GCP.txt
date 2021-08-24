@@ -7,6 +7,10 @@ gcloud config set project <projectId>
 gcloud compute zones list
 gcloud compute zones describe asia-east2-a 
 
+# Service accounts... list and create json file for service account
+gcloud iam service-accounts list
+gcloud iam service-accounts keys create --iam-account <serviceAccountEmail> service-account.json
+
 # Example gcloud commands...
 gcloud app browse 
 gcloud app deploy app.yaml
