@@ -1,4 +1,5 @@
 # To configure an ECR...
+# https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ecr/index.html
 # Create a programmatic user in IAM (or console)
 aws iam create-user --user-name <userName>
 aws iam create-access-key --user-name <userName> (keep a copy of the output)
