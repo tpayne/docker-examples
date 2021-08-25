@@ -5,6 +5,12 @@ brew install weaveworks/tap/eksctl
 
 # Create a cluster & config kubectl to use it...
 # https://eksctl.io
+# https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html
+# https://docs.determined.ai/latest/how-to/installation/setup-eks-cluster.html
+# https://docs.aws.amazon.com/cli/latest/reference/eks/delete-cluster.html
+# https://docs.aws.amazon.com/cli/latest/reference/eks/index.html
+# https://docs.cloudbees.com/docs/admin-resources/latest/plugins/docker-workflow
+
 
 eksctl create cluster --config-file eksdef.yml
 
