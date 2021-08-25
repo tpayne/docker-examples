@@ -1,0 +1,33 @@
+# EKS can be used to configure K8s/EKS
+
+brew tap weaveworks/tap
+brew install weaveworks/tap/eksctl
+
+# Create a cluster & config kubectl to use it...
+# https://eksctl.io
+
+eksctl create cluster --config-file eksdef.yml
+
+eksctl create cluster \
+  --name testdemo \
+  --node-type t2.micro \
+  --nodes 3 \
+  --nodes-min 3 \
+  --nodes-max 5 \
+  --region eu-central-1
+eksctl get cluster --name testdemo --region eu-central-1
+
+# aws eks create-cluster ...
+aws eks --region us-west-2 update-kubeconfig --name testerdef
+aws eks list-clusters
+
+kubectl cluster-info dump
+eksctl get cluster
+eksctl delete cluster testerdef --region us-west-2
+#aws eks delete-cluster --name testerdef --region us-west-2
+
+aws ecr describe-repositories
+aws ecr delete-repository --repository-name <repoName> --force
+
+# To attach node groups using AWS CLI/console - very messy...
+# Create a role using EC2 & policies AmazonEKSWorkerNodePolicy, AmazonEC2ContainerRegistryReadOnly, CloudWatchAgentServerPolicy
