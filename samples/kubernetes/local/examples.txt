@@ -57,6 +57,7 @@ kubectl help
 helm repo list
 helm repo update
 helm install my-wordpress bitnami/wordpress --version 10.1.4
+kubectl get svc --namespace default my-wordpress --template "{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}";
 helm list
 helm upgrade my-wordpress bitnami/wordpress --version 10.1.5
 helm rollback my-wordpress 1
