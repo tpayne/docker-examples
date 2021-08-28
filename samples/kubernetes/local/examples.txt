@@ -51,3 +51,14 @@ kubectl help
 docker --version
 docker help
 kubectl help
+
+# Helm samples
+
+helm repo list
+helm repo update
+helm install my-wordpress bitnami/wordpress --version 10.1.4
+helm list
+helm upgrade my-wordpress bitnami/wordpress --version 10.1.5
+helm rollback my-wordpress 1
+helm delete my-wordpress
+
