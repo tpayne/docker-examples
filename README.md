@@ -13,7 +13,7 @@ Kubernetes Example Status: Ready for use
 
 Build CI/Testing Status
 -----------------------
-This repo is automatically verified with the `Travis-CI` build system. If you want to see an example of a build,
+This repo is automatically verified with the `GitHub` build system. If you want to see an example of a build,
 click on the button below.
 
 [![CI](https://github.com/tpayne/docker-examples/actions/workflows/run-build.yml/badge.svg)](https://github.com/tpayne/docker-examples/actions/workflows/run-build.yml)
