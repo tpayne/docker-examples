@@ -1,0 +1,4 @@
+POSTFIX_RELAY_HOST=[smtp.gmail.com]:587
+POSTFIX_HOSTNAME=<domainName>
+POSTFIX_RELAY_USER=<relayEmail>@gmail.com
+POSTFIX_RELAY_PASSWORD=<relayEmailPwd>

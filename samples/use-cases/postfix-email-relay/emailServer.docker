@@ -1,0 +1,20 @@
+FROM alpine:latest
+
+RUN apk update
+RUN apk add --no-cache --update postfix cyrus-sasl ca-certificates bash
+RUN apk add --no-cache --upgrade musl musl-utils
+RUN (rm "/tmp/"* 2>/dev/null || true) && (rm -rf /var/cache/apk/* 2>/dev/null || true)
+RUN apk update
+
+# Mark used folders
+VOLUME [ "/var/spool/postfix", "/etc/postfix" ]
+
+# Expose mail submission agent port
+EXPOSE 587
+
+# Configure Postfix on startup
+COPY email-config.sh /usr/local/bin/
+ENTRYPOINT ["email-config.sh"]
+
+# Start postfix in foreground mode
+CMD ["postfix", "start-fg"]
