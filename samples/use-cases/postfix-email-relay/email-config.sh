@@ -56,7 +56,7 @@ postconf -e "smtpd_delay_reject=yes"
 postconf -e "smtpd_helo_required=yes"
 postconf -e "smtpd_helo_restrictions=permit_mynetworks,reject_invalid_helo_hostname,permit"
 
-# Extra config
+# Extra config needed for a server relay with Gmail
 postconf -e "smtp_tls_security_level=encrypt"
 
 # Don't allow requests from outside
@@ -67,7 +67,7 @@ postconf -e myhostname=$POSTFIX_HOSTNAME
 
 # Do not relay mail from untrusted networks
 postconf -e "relay_domains="
-#TEST
+# If you want to config for local relay
 #postconf -e "relay_domains=$POSTFIX_HOSTNAME"
 
 # Relay configuration
@@ -79,7 +79,7 @@ postconf -e "smtp_sasl_password_maps=lmdb:/etc/postfix/sasl_passwd"
 postconf -e "smtp_sasl_security_options=noanonymous"
 postconf -e "smtpd_recipient_restrictions=reject_non_fqdn_recipient,reject_unknown_recipient_domain,reject_unverified_recipient"
 
-# Postmap configuration
+# Postmap configuration, used to rewrite sender - normal hash: is not working 
 #echo "email1 remapemal" > /etc/postfix/generic
 #postconf -e "smtp_generic_maps = lmdb:/etc/postfix/generic"
 #postmap /etc/postfix/generic
