@@ -3,6 +3,9 @@
 az login
 az aks install-cli
 
+# Default group
+az configure --defaults group=<rg>
+
 # Resource template dump...
 az group export -n <rg>
 
