@@ -1,0 +1,15 @@
+# This docker file creates an Ubuntu image and installs various packages into it
+FROM ubuntu
+
+# Install a couple of supporting packs and do an update...
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update
+RUN apt-get install -y -q nodejs build-essential npm
+RUN apt-get update
+RUN npm install -g yarn
+RUN adduser nodejs -q
+RUN adduser nodejs users -q
+USER nodejs:users
+WORKDIR /app
+
+CMD ["/bin/bash"]

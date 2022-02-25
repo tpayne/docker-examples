@@ -13,6 +13,7 @@ DOCKERFILES=\
 	DockerFileMongoDB.img \
 	DockerFilePostgres.img \
 	DockerFileUbuntu.img \
+	DockerFileReact.img \
 	DockerFileWebServer.img
 
 build: $(DOCKERFILES)
