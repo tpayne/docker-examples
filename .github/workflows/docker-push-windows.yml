@@ -9,11 +9,11 @@ name: GitHub CR Build and Push Windows
 
 on:
   push:
-    branches: [ windows ]
+    branches: [ master ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
   pull_request:
-    branches: [ windows ]
+    branches: [ master ]
 
 env:
   REGISTRY: ghcr.io
