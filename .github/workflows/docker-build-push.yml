@@ -78,7 +78,7 @@ jobs:
           context: samples/kubernetes/
           file: samples/kubernetes/DockerKubeHelmAlpine.docker
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ secrets.DOCKERHUB_USER }}/postfixmailrelay
+          tags: ${{ secrets.DOCKERHUB_USER }}/alpinekube
 
       - name: Build and push email image Dockerhub
         uses: docker/build-push-action@v2
@@ -88,10 +88,4 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ secrets.DOCKERHUB_USER }}/postfixmailrelay
 
-      - name: Build and push Windows image Dockerhub
-        uses: docker/build-push-action@v2
-        with:
-          context: samples/adhoc-examples/
-          file: samples/adhoc-examples/DockerWindows.docker
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ secrets.DOCKERHUB_USER }}/windows
+
