@@ -16,7 +16,7 @@ Build CI/Testing Status
 This repo is automatically verified with the `GitHub` build system. If you want to see an example of a build,
 click on the button below.
 
-[![CI](https://github.com/tpayne/docker-examples/actions/workflows/run-build.yml/badge.svg)](https://github.com/tpayne/docker-examples/actions/workflows/run-build.yml)
+[![CI](https://github.com/tpayne/docker-examples/actions/workflows/main.yml/badge.svg)](https://github.com/tpayne/docker-examples/actions/workflows/main.yml)
 
 Kubernetes Examples
 ===================
