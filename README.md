@@ -159,3 +159,8 @@ Licensing
 This software is licensed using the terms and provisions of the [MIT license](https://en.wikipedia.org/wiki/MIT_License).
 
 Google packages are release under their licensing - Apache 2.0
+
+Notes
+=====
+- Windows references - https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/main/windows-container-samples
+- https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile#:~:text=%20Dockerfile%20on%20Windows%20%201%20Basic%20Syntax.,Dockerfile%20with%20the%20RUN%20operation.%20PowerShell%27s...%20More%20
