@@ -61,7 +61,7 @@ jobs:
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: samples/kubernetes/
-          file: samples/kubernetes/DockerKubeHelmAlpine.yml
+          file: samples/kubernetes/DockerKubeHelmAlpine.docker
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -72,18 +72,26 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_PWD }}
 
-      - name: Build and push to Kube image to Dockerhub
+      - name: Build and push Kube image to Dockerhub
         uses: docker/build-push-action@v2
         with:
           context: samples/kubernetes/
-          file: samples/kubernetes/DockerKubeHelmAlpine.yml
+          file: samples/kubernetes/DockerKubeHelmAlpine.docker
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ secrets.DOCKERHUB_USER }}/postfixmailrelay
 
-      - name: Build and push to email image Dockerhub
+      - name: Build and push email image Dockerhub
         uses: docker/build-push-action@v2
         with:
           context: samples/use-cases/postfix-email-relay/
           file: samples/use-cases/postfix-email-relay/emailServer.docker
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ secrets.DOCKERHUB_USER }}/postfixmailrelay
+
+      - name: Build and push Windows image Dockerhub
+        uses: docker/build-push-action@v2
+        with:
+          context: samples/adhoc-examples/
+          file: samples/adhoc-examples/DockerWindows.docker
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ secrets.DOCKERHUB_USER }}/windows
