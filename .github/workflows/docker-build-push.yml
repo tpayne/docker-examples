@@ -72,11 +72,18 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_PWD }}
 
-      - name: Build and push to Dockerhub
+      - name: Build and push to Kube image to Dockerhub
         uses: docker/build-push-action@v2
         with:
           context: samples/kubernetes/
           file: samples/kubernetes/DockerKubeHelmAlpine.yml
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ secrets.DOCKERHUB_USER }}/alpinekube
+          tags: ${{ secrets.DOCKERHUB_USER }}/postfixmailrelay
 
+      - name: Build and push to email image Dockerhub
+        uses: docker/build-push-action@v2
+        with:
+          context: samples/use-cases/postfix-email-relay/
+          file: samples/use-cases/postfix-email-relay/emailServer.docker
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ secrets.DOCKERHUB_USER }}/postfixmailrelay
