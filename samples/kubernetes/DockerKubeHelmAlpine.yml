@@ -4,10 +4,15 @@ WORKDIR /app
 RUN apk -U upgrade
 RUN apk add --no-cache ca-certificates bash git openssl openssh 
 RUN apk add --no-cache curl gettext jq bind-tools 
+RUN apk add --no-cache docker
 RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" \
     && chmod +x ./kubectl \
     && mv ./kubectl /usr/local/bin/kubectl
 RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 \
     && chmod +x get_helm.sh && ./get_helm.sh
+
+ARG account=docker
+RUN addgroup -S ${account} && adduser -S ${account} -G ${account}
+USER ${account}:${account}
 
 CMD bash
