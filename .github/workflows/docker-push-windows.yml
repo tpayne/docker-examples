@@ -1,4 +1,4 @@
-name: GitHub CR Build and Push
+name: GitHub CR Build and Push Windows
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
