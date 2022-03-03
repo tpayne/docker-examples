@@ -5,13 +5,15 @@ name: GitHub CR Build and Push Windows
 # separate terms of service, privacy policy, and support
 # documentation.
 
+# Disabling for now...
+
 on:
   push:
-    branches: [ master ]
+    branches: [ windows ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
   pull_request:
-    branches: [ master ]
+    branches: [ windows ]
 
 env:
   REGISTRY: ghcr.io
