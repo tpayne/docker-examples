@@ -78,5 +78,5 @@ jobs:
           context: samples/kubernetes/
           file: samples/kubernetes/DockerKubeHelmAlpine.yml
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/alpinekube
+          tags: ${{ secrets.DOCKERHUB_USER }}/alpinekube
 
