@@ -1,0 +1,10 @@
+FROM alpine:slim
+
+RUN apk -U upgrade
+RUN apk add --no-cache ca-certificates bash git openssh 
+RUN apk add --no-cache curl gettext jq bind-tools 
+RUN RUN apk add --no-cache helm kubectl
+
+WORKDIR /config
+
+CMD bash
