@@ -17,6 +17,7 @@ This repo is automatically verified with the `GitHub` build system. If you want 
 click on the button below.
 
 [![CI](https://github.com/tpayne/docker-examples/actions/workflows/main.yml/badge.svg)](https://github.com/tpayne/docker-examples/actions/workflows/main.yml)
+[![GitHub CR Build and Push](https://github.com/tpayne/docker-examples/actions/workflows/docker-build-push.yml/badge.svg)](https://github.com/tpayne/docker-examples/actions/workflows/docker-build-push.yml)
 
 Kubernetes Examples
 ===================
