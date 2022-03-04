@@ -9,4 +9,4 @@ RUN addgroup -S ${account} \
     && adduser -S ${account} -G ${account}
 USER ${account}:${account}
 
-CMD bash
+CMD ["bash", "-c", "while [ /bin/true ]; do sleep 5; done"]
