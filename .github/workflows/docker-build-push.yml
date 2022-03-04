@@ -70,7 +70,7 @@ jobs:
         id: meta1
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
-          images: ${{ env.REGISTRY }}/${{ github.actor }}/pgclient
+          images: ${{ env.REGISTRY }}/${{ github.actor }}/alpine-pgclient
 
       - name: Build and Push PgClient Docker image
         id: build-and-push1
@@ -110,6 +110,6 @@ jobs:
           context: samples/adhoc-examples/
           file: samples/adhoc-examples/DockerPgClient.docker
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ secrets.DOCKERHUB_USER }}/pgclient
+          tags: ${{ secrets.DOCKERHUB_USER }}/alpine-pgclient
 
 
