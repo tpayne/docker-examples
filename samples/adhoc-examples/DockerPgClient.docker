@@ -1,0 +1,12 @@
+FROM alpine:latest
+WORKDIR /dbusr
+
+RUN apk -U upgrade
+RUN apk add --no-cache ca-certificates bash openssl openssh postgresql-client
+
+ARG account=postgresusr
+RUN addgroup -S ${account} \
+    && adduser -S ${account} -G ${account}
+USER ${account}:${account}
+
+CMD bash
