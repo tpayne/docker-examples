@@ -165,3 +165,7 @@ Notes
 =====
 - Windows references - https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/main/windows-container-samples
 - https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile#:~:text=%20Dockerfile%20on%20Windows%20%201%20Basic%20Syntax.,Dockerfile%20with%20the%20RUN%20operation.%20PowerShell%27s...%20More%20
+
+Useful Samples
+==============
+- https://github.com/oracle/docker-images/tree/main/OracleDatabase
