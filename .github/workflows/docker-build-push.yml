@@ -82,6 +82,22 @@ jobs:
           tags: ${{ steps.meta1.outputs.tags }}
           labels: ${{ steps.meta1.outputs.labels }}
 
+      - name: Extract AWS Docker metadata
+        id: metaaws
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.actor }}/aws-cli-cdk
+
+      - name: Build and Push AWS Docker image
+        id: build-and-push2
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: samples/aws/
+          file: samples/aws/aws-cli-cdk.Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.metaaws.outputs.tags }}
+          labels: ${{ steps.metaaws.outputs.labels }}
+
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
