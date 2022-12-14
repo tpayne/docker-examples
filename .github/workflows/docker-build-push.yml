@@ -112,4 +112,10 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ secrets.DOCKERHUB_USER }}/alpine-pgclient
 
-
+      - name: Build and push AWS image to Dockerhub
+        uses: docker/build-push-action@v2
+        with:
+          context: samples/aws/
+          file: samples/aws/aws-cli-cdk.Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ secrets.DOCKERHUB_USER }}/aws-cli-cdk
