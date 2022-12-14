@@ -1,4 +1,4 @@
-# This image is used for running Argo CLI
+# This image is used for running AWS CLI, CDK and Node
 FROM alpine:3
 
 # Set up APK repositories and upgrade
