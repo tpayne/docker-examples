@@ -54,7 +54,7 @@ jobs:
 
       - name: Build and Push Kubectl Docker image
         id: build-and-push
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@175d02bffea74695e96b351069ac938b338802f9
         with:
           context: samples/kubernetes/
           file: samples/kubernetes/DockerKubeHelmAlpine.docker
@@ -74,7 +74,7 @@ jobs:
 
       - name: Build and Push PgClient Docker image
         id: build-and-push1
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@175d02bffea74695e96b351069ac938b338802f9
         with:
           context: samples/adhoc-examples/
           file: samples/adhoc-examples/DockerPgClient.docker
@@ -90,7 +90,7 @@ jobs:
 
       - name: Build and Push AWS Docker image
         id: build-and-push2
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@175d02bffea74695e96b351069ac938b338802f9
         with:
           context: samples/aws/
           file: samples/aws/aws-cli-cdk.Dockerfile
