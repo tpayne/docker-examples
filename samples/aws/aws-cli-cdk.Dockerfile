@@ -18,7 +18,6 @@ RUN npm install -g aws-cdk-lib
 RUN npm install -g react-native 
 RUN npm install -g create-react-app
 
-
 WORKDIR /aws
 
 ARG account=aws
