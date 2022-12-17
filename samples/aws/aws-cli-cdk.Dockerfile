@@ -6,10 +6,18 @@ RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/ma
     && apk -U upgrade
 
 # Install required tools
-RUN apk add --no-cache git curl 
+RUN apk add --no-cache git curl
+RUN apk add --no-cache libstdc++
+
+# Needed for AWS CLI/CDK
 RUN apk add --no-cache nodejs npm
 RUN apk add --no-cache aws-cli 
 RUN npm install -g aws-cdk-lib 
+
+# Adding react support for apps
+RUN npm install -g react-native 
+RUN npm install -g create-react-app
+
 
 WORKDIR /aws
 
