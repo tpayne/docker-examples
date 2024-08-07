@@ -1,5 +1,5 @@
 # This image is used for running AWS CLI, CDK and Node
-FROM alpine:20221110
+FROM alpine:20240807
 
 # Set up APK repositories and upgrade
 RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main git \
