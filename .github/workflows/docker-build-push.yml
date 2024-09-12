@@ -48,7 +48,7 @@ jobs:
       # https://github.com/docker/metadata-action
       - name: Extract Kubectl Docker metadata
         id: meta
-        uses: docker/metadata-action@314ddf6d4a82333bf1bc7630399df41bf68eba09
+        uses: docker/metadata-action@70b2cdc6480c1a8b86edf1777157f8f437de2166
         with:
           images: ${{ env.REGISTRY }}/${{ github.actor }}/alpinekube
 
@@ -68,7 +68,7 @@ jobs:
       # https://github.com/docker/metadata-action
       - name: Extract PgClient Docker metadata
         id: meta1
-        uses: docker/metadata-action@314ddf6d4a82333bf1bc7630399df41bf68eba09
+        uses: docker/metadata-action@70b2cdc6480c1a8b86edf1777157f8f437de2166
         with:
           images: ${{ env.REGISTRY }}/${{ github.actor }}/alpine-pgclient
 
@@ -84,7 +84,7 @@ jobs:
 
       - name: Extract AWS Docker metadata
         id: metaaws
-        uses: docker/metadata-action@314ddf6d4a82333bf1bc7630399df41bf68eba09
+        uses: docker/metadata-action@70b2cdc6480c1a8b86edf1777157f8f437de2166
         with:
           images: ${{ env.REGISTRY }}/${{ github.actor }}/aws-cli-cdk
 
