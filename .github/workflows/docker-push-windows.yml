@@ -75,7 +75,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PWD }}
 
       - name: Build and push Windows image to Dockerhub
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v6
         with:
           context: samples/adhoc-examples/
           file: samples/kubernetes/DockerWindows.docker
