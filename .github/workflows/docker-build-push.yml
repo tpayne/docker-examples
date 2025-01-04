@@ -105,7 +105,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PWD }}
 
       - name: Build and push Kube image to Dockerhub
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v6
         with:
           context: samples/kubernetes/
           file: samples/kubernetes/DockerKubeHelmAlpine.docker
@@ -113,7 +113,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USER }}/alpinekube
 
       - name: Build and push email image Dockerhub
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v6
         with:
           context: samples/use-cases/postfix-email-relay/
           file: samples/use-cases/postfix-email-relay/emailServer.docker
@@ -121,7 +121,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USER }}/postfixmailrelay
 
       - name: Build and push Pgclient image to Dockerhub
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v6
         with:
           context: samples/adhoc-examples/
           file: samples/adhoc-examples/DockerPgClient.docker
@@ -129,7 +129,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USER }}/alpine-pgclient
 
       - name: Build and push AWS image to Dockerhub
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v6
         with:
           context: samples/aws/
           file: samples/aws/aws-cli-cdk.Dockerfile
