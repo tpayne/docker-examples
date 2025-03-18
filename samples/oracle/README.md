@@ -3,7 +3,12 @@
 ## Introduction
 This README contains information on how to create an Oracle Docker image for Apple Mac M chipsets.
 
-The information in this document is derived from a number of sources and has been validated as of 01/03/2025.
+The information in this document is derived from a number of sources and has been validated as of 01/03/2025 using
+
+```bash
+uname -a
+Darwin GB-HR949NKFWG-CON 24.3.0 Darwin Kernel Version 24.3.0: Thu Jan  2 20:24:16 PST 2025; root:xnu-11215.81.4~3/RELEASE_ARM64_T6000 arm64
+```
 
 ## Pre-canned Oracle Image
 A precanned Oracle Docker image has already been created and is available at the Docker Hub [repo](https://hub.docker.com/repository/docker/tpayne666/oracle-database/general). However, due to licensing issues, it is a private repo and access is only granted on a request basis.
