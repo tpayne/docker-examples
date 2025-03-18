@@ -1,4 +1,4 @@
-# Creating Oracle Docker Images
+9# Creating Oracle Docker Images
 
 ## Introduction
 This README contains information on how to create an Oracle Docker image for Apple Mac M chipsets.
@@ -70,4 +70,4 @@ sqlplus sys/password@localhost/orcl as sysdba
 ```
 
 # Licensing
-The Oracle image is based on the Oracle Enterprise Edition developer use only version and should only be used for DEVELOPMENT, non-commercial or production use. Please refer to Oracle licensing for their specific terms.
+The Oracle image is based on the Oracle Enterprise Edition developer use only version and should only be used for DEVELOPMENT, non-commercial or non-production use. Please refer to Oracle licensing for their specific terms.
