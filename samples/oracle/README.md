@@ -11,7 +11,9 @@ Darwin GB-HR949NKFWG-CON 24.3.0 Darwin Kernel Version 24.3.0: Thu Jan  2 20:24:1
 ```
 
 ## Pre-canned Oracle Image
-A precanned Oracle Docker image has already been created and is available at the Docker Hub [repo](https://hub.docker.com/repository/docker/tpayne666/oracle-database/general). However, due to licensing issues, it is a private repo and access is only granted on a request basis.
+A precanned Oracle Docker image has already been created and is available at the Docker Hub [repo](https://hub.docker.com/repository/docker/tpayne666/oracle-database/general). 
+
+However, due to licensing issues, it is a private repo and access is only granted on a request basis.
 
 ## How to create your own Oracle image?
 To create your own Oracle image, please do the following...
@@ -19,9 +21,10 @@ To create your own Oracle image, please do the following...
 * Clone the following [repo](https://github.com/oracle/docker-images.git) from Oracle
 * Register with Oracle and download the file `LINUX.ARM64_1919000_db_home.zip` for "Oracle Database 19c for LINUX ARM (aarch64)" from their Oracle [download](https://www.oracle.com/database/technologies/oracle-database-software-downloads.html#license-lightbox) page
 * You will need to agree with the Oracle licensing T&Cs
-* Once you have downloaded the image, do the following
+* Once you have downloaded the image, do the following to build it
 
 ```bash
+git clone https://github.com/oracle/docker-images.git
 cd docker-images/OracleDatabase/SingleInstance/dockerfiles
 cp ~/Downloads/LINUX.ARM64_1919000_db_home.zip 19.3.0/
 ./buildContainerImage.sh -v 19.3.0 -e
@@ -45,7 +48,7 @@ You can monitor the startup of the image using a command like...
 
 ```bash
 docker ps -f name=oracle19c
-docker log -f <containerId>
+docker logs -f <containerId>
 ```
 
 or 
