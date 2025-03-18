@@ -30,7 +30,7 @@ cp ~/Downloads/LINUX.ARM64_1919000_db_home.zip 19.3.0/
 ./buildContainerImage.sh -v 19.3.0 -e
 ```
 
-The Oracle should then be built.
+The Oracle image should then be built.
 
 ## How to run the Oracle image?
 To run the Oracle image, you can use the following command.
