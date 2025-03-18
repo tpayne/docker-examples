@@ -52,8 +52,7 @@ docker logs -f \
     awk '{print $1}')
 ```
 
-
-The image will take a while to initially launch, but once it has you can then create an image from the running container.
+The image will take a while to initially launch, but once it has you can then create an image from the running container with your specific requirements.
 
 ## Connecting to the Container
 To connect to the running container, use a connection string similar to the following depending on the client that you are using.
@@ -63,4 +62,4 @@ sqlplus sys/password@localhost/orcl as sysdba
 ```
 
 # Licensing
-The Oracle image is based on the Oracle Enterprise Edition developer use only version and should only be used for DEVELOPMENT, non-commercial or production use. Please refer to Oracle licensing for specific terms.
+The Oracle image is based on the Oracle Enterprise Edition developer use only version and should only be used for DEVELOPMENT, non-commercial or production use. Please refer to Oracle licensing for their specific terms.
